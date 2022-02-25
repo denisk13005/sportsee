@@ -1,5 +1,5 @@
-import React from 'react';
-import LeftBtn from './LeftBtn';
+import React from 'react'
+import LeftBtn from './LeftBtn'
 import meditation from '../assets/meditation.svg'
 import nageur from '../assets/nageur.svg'
 import cycliste from '../assets/cycliste.svg'
@@ -9,17 +9,16 @@ import '../styles/_leftNavBar.scss'
 
 const LeftNavBar = () => {
   return (
-    <aside className='leftNavBar'>
+    <aside className="leftNavBar">
       <div className="leftBtnContainer">
-
-      <LeftBtn test={meditation}/>
-      <LeftBtn test={nageur}/>
-      <LeftBtn test={cycliste}/>
-      <LeftBtn test={haltere}/>
+        <LeftBtn test={meditation} />
+        <LeftBtn test={nageur} />
+        <LeftBtn test={cycliste} />
+        <LeftBtn test={haltere} />
       </div>
-      <img src={copyright} alt='copyright'/>
+      <img className="copyright" src={copyright} alt="copyright" />
     </aside>
-  );
-};
+  )
+}
 
-export default LeftNavBar;
+export default LeftNavBar

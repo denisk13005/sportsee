@@ -1,5 +1,13 @@
-.leftNavBar{
+.leftNavBar {
   width: 117px;
-  height: 100vh;
+  height: 1024%;
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 256px;
+  position: absolute;
+  .copyright {
+    margin-top: 150px;
+  }
 }
