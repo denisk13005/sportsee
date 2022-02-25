@@ -5,7 +5,7 @@ import nageur from '../assets/nageur.svg'
 import cycliste from '../assets/cycliste.svg'
 import haltere from '../assets/haltere.svg'
 import copyright from '../assets/copyright.svg'
-import '../styles/_leftNavBar.scss'
+import '../styles/components/leftNavBar.scss'
 
 const LeftNavBar = () => {
   console.log(typeof meditation)

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/_leftBtn.scss'
+import '../styles/components/leftBtn.scss'
 import PropTypes from 'prop-types'
 
 const LeftBtn = ({ test }) => {
