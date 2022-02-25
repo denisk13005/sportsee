@@ -1,12 +1,14 @@
 .leftNavBar {
   width: 117px;
-  height: 1024%;
+  height: 678px;
   background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 256px;
-  position: absolute;
+
+  z-index: 1;
+
   .copyright {
     margin-top: 150px;
     margin-right: 10px;
