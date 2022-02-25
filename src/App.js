@@ -1,10 +1,11 @@
+import LeftNavBar from './components/LeftNavBar'
 
 function App() {
   return (
-    <div className="App">
-    <h1>sportsee</h1>
-    </div>
-  );
+    <main className="App">
+      <LeftNavBar />
+    </main>
+  )
 }
 
-export default App;
+export default App
