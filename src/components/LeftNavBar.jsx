@@ -8,6 +8,7 @@ import copyright from '../assets/copyright.svg'
 import '../styles/_leftNavBar.scss'
 
 const LeftNavBar = () => {
+  console.log(typeof meditation)
   return (
     <aside className="leftNavBar">
       <div className="leftBtnContainer">
