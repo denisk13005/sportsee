@@ -10,7 +10,7 @@ const LeftBtn = ({ test }) => {
   )
 }
 LeftBtn.propTypes = {
-  img: PropTypes.string,
+  test: PropTypes.string,
 }
 
 export default LeftBtn
