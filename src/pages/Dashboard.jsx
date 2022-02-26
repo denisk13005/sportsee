@@ -26,9 +26,10 @@ const Dashboard = () => {
     <div>
       <TopNav />
       <LeftNavBar />
-      <div className="mainContent">
-        <Header userName={'thomas'} />
-        {datas ? (
+      {datas ? (
+        <div className="mainContent">
+          <Header userName={datas.data.userInfos.firstName} />
+
           <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
               <div className="dailyActivity"></div>
@@ -61,8 +62,8 @@ const Dashboard = () => {
               />
             </aside>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </div>
   )
 }
