@@ -2,10 +2,15 @@ import React from 'react'
 import '../styles/components/leftBtn.scss'
 import PropTypes from 'prop-types'
 
-const LeftBtn = ({ test }) => {
+/**
+ *
+ * @param {string} icone
+ * @returns {ReactElement}
+ */
+const LeftBtn = ({ icone }) => {
   return (
     <div className="imgContainer">
-      <img src={test} alt="sport" />
+      <img src={icone} alt="sport" />
     </div>
   )
 }

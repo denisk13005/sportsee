@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/components/cardInfo.scss'
 /**
  * Card info component
  * @param {string} icone
@@ -9,14 +10,14 @@ import React from 'react'
  */
 const CardInfo = ({ icone, number, unit, type }) => {
   return (
-    <div>
+    <div className="container">
       <img src={icone} alt="icone" />
       <div>
-        <h4>
+        <p className="numberAndUnit">
           {number}
           {unit}
-        </h4>
-        <p>{type}</p>
+        </p>
+        <p className="type">{type}</p>
       </div>
     </div>
   )

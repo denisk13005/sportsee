@@ -6,15 +6,18 @@ import cycliste from '../assets/cycliste.svg'
 import haltere from '../assets/haltere.svg'
 import copyright from '../assets/copyright.svg'
 import '../styles/components/leftNavBar.scss'
-
+/**
+ *
+ * @returns {ReactElement}
+ */
 const LeftNavBar = () => {
   return (
     <aside className="leftNavBar">
       <div className="leftBtnContainer">
-        <LeftBtn test={meditation} />
-        <LeftBtn test={nageur} />
-        <LeftBtn test={cycliste} />
-        <LeftBtn test={haltere} />
+        <LeftBtn icone={meditation} />
+        <LeftBtn icone={nageur} />
+        <LeftBtn icone={cycliste} />
+        <LeftBtn icone={haltere} />
       </div>
       <img className="copyright" src={copyright} alt="copyright" />
     </aside>

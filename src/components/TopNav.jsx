@@ -1,7 +1,9 @@
 import React from 'react'
 import '../styles/components/topNav.scss'
 import logo from '../assets/logo.svg'
-
+/**
+ * @returns {ReactElement}
+ */
 const TopNav = () => {
   return (
     <header className="topNav">
