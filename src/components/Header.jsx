@@ -3,6 +3,12 @@ import '../styles/components/header.scss'
 import clap from '../assets/clap.png'
 import PropTypes from 'prop-types'
 
+/**
+ * Dashboard header to greet the user
+ * @type {{userName : string}} userName
+ * @returns {HTMLElement} hi user
+ */
+
 const Header = ({ userName }) => {
   return (
     <div className="title">

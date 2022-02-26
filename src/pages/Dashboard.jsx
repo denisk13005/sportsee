@@ -10,7 +10,7 @@ const Dashboard = () => {
       <TopNav />
       <LeftNavBar />
       <div className="mainContent">
-        <Header userName={'Thomas'} />
+        <Header userName={'thomas'} />
         <div className="graphsAndDailyContainer">
           <section className="graphsContainer">
             <div className="dailyActivity"></div>
