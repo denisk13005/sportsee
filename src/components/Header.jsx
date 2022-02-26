@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 /**
  * Dashboard header to greet the user
  * @param {string} userName user name
- * @returns {HTMLElement} hi user
+ * @returns {ReactElement} hi user
  */
 
 const Header = ({ userName }) => {
