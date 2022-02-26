@@ -4,8 +4,12 @@ import LeftNavBar from '../components/LeftNavBar'
 import TopNav from '../components/TopNav'
 import '../styles/pages/dashboard.scss'
 import fetchDatas from '../fetchDatas'
+import CardInfo from '../components/CardInfo'
 import flammeRouge from '../assets/flammeRouge.svg'
-
+import chicken from '../assets/PouletBleu.svg'
+import apple from '../assets/pommeJaune.svg'
+import burger from '../assets/cheeseburger.svg'
+console.log(typeof flammeRouge)
 const Dashboard = () => {
   const [datas, setDatas] = useState()
 
@@ -24,24 +28,40 @@ const Dashboard = () => {
       <LeftNavBar />
       <div className="mainContent">
         <Header userName={'thomas'} />
-        <div className="graphsAndDailyContainer">
-          <section className="graphsContainer">
-            <div className="dailyActivity"></div>
-            <div className="otherGraph"></div>
-          </section>
-          <aside className="dailyIntake">
-            <div className="cal">
-              <img src={flammeRouge} alt="flamme" />
-              <div>
-                <h4>1900</h4>
-                <p>Calories</p>
-              </div>
-            </div>
-            <div className="prot"></div>
-            <div className="gluc"></div>
-            <div className="lip"></div>
-          </aside>
-        </div>
+        {datas ? (
+          <div className="graphsAndDailyContainer">
+            <section className="graphsContainer">
+              <div className="dailyActivity"></div>
+              <div className="otherGraph"></div>
+            </section>
+            <aside className="dailyIntake">
+              <CardInfo
+                icone={flammeRouge}
+                number={datas.data.keyData.calorieCount}
+                unit={'kCal'}
+                type={'Calorie'}
+              />
+              <CardInfo
+                icone={chicken}
+                number={datas.data.keyData.proteinCount}
+                unit={'g'}
+                type={'Protéines'}
+              />
+              <CardInfo
+                icone={apple}
+                number={datas.data.keyData.carbohydrateCount}
+                unit={'g'}
+                type={'Glucides'}
+              />
+              <CardInfo
+                icone={burger}
+                number={datas.data.keyData.lipidCount}
+                unit={'g'}
+                type={'Lipides'}
+              />
+            </aside>
+          </div>
+        ) : null}
       </div>
     </div>
   )
