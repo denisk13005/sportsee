@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/LeftBtn.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/LeftBtn.jsx</h1>
 
     
 
@@ -26,21 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Dashboard from '../src/pages/Dashboard'
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import '../styles/components/leftBtn.scss'
+import PropTypes from 'prop-types'
 
 /**
- * App function
+ *
+ * @param {string} icone
  * @returns {ReactElement}
  */
-function App() {
+const LeftBtn = ({ icone }) => {
   return (
-    &lt;main className="App">
-      &lt;Dashboard />
-    &lt;/main>
+    &lt;div className="imgContainer">
+      &lt;img src={icone} alt="sport" />
+    &lt;/div>
   )
 }
+LeftBtn.propTypes = {
+  test: PropTypes.string,
+}
 
-export default App
+export default LeftBtn
 </code></pre>
         </article>
     </section>

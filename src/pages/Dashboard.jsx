@@ -9,8 +9,14 @@ import flammeRouge from '../assets/flammeRouge.svg'
 import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
-console.log(typeof flammeRouge)
+/**
+ *
+ * @returns {ReactElements}
+ */
 const Dashboard = () => {
+  /**
+   * @param {object} datas users datas get from api
+   */
   const [datas, setDatas] = useState()
 
   const getDatas = async () => {

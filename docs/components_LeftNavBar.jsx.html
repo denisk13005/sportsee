@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
 
     
 
@@ -26,21 +26,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Dashboard from '../src/pages/Dashboard'
-
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import LeftBtn from './LeftBtn'
+import meditation from '../assets/meditation.svg'
+import nageur from '../assets/nageur.svg'
+import cycliste from '../assets/cycliste.svg'
+import haltere from '../assets/haltere.svg'
+import copyright from '../assets/copyright.svg'
+import '../styles/components/leftNavBar.scss'
 /**
- * App function
+ *
  * @returns {ReactElement}
  */
-function App() {
+const LeftNavBar = () => {
   return (
-    &lt;main className="App">
-      &lt;Dashboard />
-    &lt;/main>
+    &lt;aside className="leftNavBar">
+      &lt;div className="leftBtnContainer">
+        &lt;LeftBtn icone={meditation} />
+        &lt;LeftBtn icone={nageur} />
+        &lt;LeftBtn icone={cycliste} />
+        &lt;LeftBtn icone={haltere} />
+      &lt;/div>
+      &lt;img className="copyright" src={copyright} alt="copyright" />
+    &lt;/aside>
   )
 }
 
-export default App
+export default LeftNavBar
 </code></pre>
         </article>
     </section>

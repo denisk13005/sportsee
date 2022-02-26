@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/CardInfo.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/CardInfo.jsx</h1>
 
     
 
@@ -26,21 +26,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Dashboard from '../src/pages/Dashboard'
-
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import '../styles/components/cardInfo.scss'
 /**
- * App function
- * @returns {ReactElement}
+ * Card info component
+ * @param {string} icone
+ * @param {string} number
+ * @param {string} unit
+ * @param {string} type
+ * @returns {ReactElement} card info of daily intake
  */
-function App() {
+const CardInfo = ({ icone, number, unit, type }) => {
   return (
-    &lt;main className="App">
-      &lt;Dashboard />
-    &lt;/main>
+    &lt;div className="container">
+      &lt;img src={icone} alt="icone" />
+      &lt;div>
+        &lt;p className="numberAndUnit">
+          {number}
+          {unit}
+        &lt;/p>
+        &lt;p className="type">{type}&lt;/p>
+      &lt;/div>
+    &lt;/div>
   )
 }
 
-export default App
+export default CardInfo
 </code></pre>
         </article>
     </section>

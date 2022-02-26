@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/TopNav.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/TopNav.jsx</h1>
 
     
 
@@ -26,21 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Dashboard from '../src/pages/Dashboard'
-
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import '../styles/components/topNav.scss'
+import logo from '../assets/logo.svg'
 /**
- * App function
  * @returns {ReactElement}
  */
-function App() {
+const TopNav = () => {
   return (
-    &lt;main className="App">
-      &lt;Dashboard />
-    &lt;/main>
+    &lt;header className="topNav">
+      &lt;img src={logo} alt="logo" />
+      &lt;nav className="navigation">
+        &lt;ul>
+          &lt;li>Acceuil&lt;/li>
+          &lt;li>Profil&lt;/li>
+          &lt;li>Réglage&lt;/li>
+          &lt;li>Communauté&lt;/li>
+        &lt;/ul>
+      &lt;/nav>
+    &lt;/header>
   )
 }
 
-export default App
+export default TopNav
 </code></pre>
         </article>
     </section>
