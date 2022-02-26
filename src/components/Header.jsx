@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 /**
  * Dashboard header to greet the user
- * @type {{userName : string}} userName
+ * @param {string} userName user name
  * @returns {HTMLElement} hi user
  */
 

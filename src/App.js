@@ -2,7 +2,7 @@ import Dashboard from '../src/pages/Dashboard'
 
 /**
  * App function
- * @returns {HTMLElement}
+ * @returns {ReactElement}
  */
 function App() {
   return (
