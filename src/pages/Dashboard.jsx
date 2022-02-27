@@ -20,21 +20,19 @@ const Dashboard = () => {
   const [datas, setDatas] = useState()
 
   const getDatas = async () => {
-    setDatas(await fetchDatas())
+    setDatas(await fetchDatas(18))
   }
   useEffect(() => {
     getDatas()
   }, [])
-  if (datas) {
-    console.log(datas)
-  }
+
   return (
     <div>
       <TopNav />
       <LeftNavBar />
       {datas ? (
         <div className="mainContent">
-          <Header userName={datas.data.userInfos.firstName} />
+          <Header userName={datas.userMainDatas.data.userInfos.firstName} />
 
           <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
