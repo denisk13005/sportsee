@@ -1,4 +1,4 @@
-import Dashboard from '../src/pages/Dashboard'
+import Router from './router/Router'
 
 /**
  * App function
@@ -7,7 +7,7 @@ import Dashboard from '../src/pages/Dashboard'
 function App() {
   return (
     <main className="App">
-      <Dashboard />
+      <Router />
     </main>
   )
 }
