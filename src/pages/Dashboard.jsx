@@ -20,11 +20,12 @@ const Dashboard = () => {
   const [datas, setDatas] = useState()
 
   const getDatas = async () => {
-    setDatas(await fetchDatas(18))
+    setDatas(await fetchDatas(12))
   }
   useEffect(() => {
     getDatas()
   }, [])
+  console.log(datas)
 
   return (
     <div>
