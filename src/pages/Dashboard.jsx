@@ -23,12 +23,13 @@ const Dashboard = () => {
 
   const [userMainDatas, setUserMainDatas] = useState()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDatas = async () => {
     setUserMainDatas(await fetchUserMainDatas(userId))
   }
   useEffect(() => {
     getDatas()
-  }, [])
+  }, [getDatas])
   console.log(userMainDatas)
 
   return (

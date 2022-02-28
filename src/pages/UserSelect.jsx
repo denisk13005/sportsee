@@ -5,7 +5,6 @@ import cecilia from '../assets/cecilia.jpg'
 import john from '../assets/john.jpg'
 import '../styles/pages/userSelect.scss'
 import TopNav from '../components/TopNav'
-import LeftBtn from '../components/LeftBtn'
 import LeftNavBar from '../components/LeftNavBar'
 
 const UserSelect = () => {
