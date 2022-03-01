@@ -33,7 +33,7 @@ const UserSelect = () => {
               <p>Ratorez</p>
             </div>
           </NavLink>
-          <NavLink className="navlink" to="errorPage">
+          <NavLink className="navlink" to="/errorPage">
             <div className="userCard">
               <div className="imgContainer">
                 <img src={john} alt="karl " />
