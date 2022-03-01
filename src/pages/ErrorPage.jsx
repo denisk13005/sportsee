@@ -1,11 +1,15 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import '../styles/pages/errorPage.scss'
 
 const ErrorPage = () => {
   return (
     <div className="errorPageContainer">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima in quis
-      maxime sapiente, animi nam, qui voluptatum deleniti a fugiat numquam illo
-      ipsum hic, deserunt reiciendis voluptas reprehenderit sequi eos.
+      <h1>404</h1>
+      <p>ooooops la page demandée n'existe pas</p>
+      <NavLink className="navlink" to="/">
+        retour à l'accueil
+      </NavLink>
     </div>
   )
 }

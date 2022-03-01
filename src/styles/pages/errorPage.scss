@@ -1,0 +1,36 @@
+.errorPageContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-size: 264px;
+    margin: 0;
+  }
+  p {
+    font-size: 44px;
+  }
+  .navlink {
+    background-color: #ff0101;
+    color: white;
+    text-decoration: none;
+    width: 434px;
+    height: 64px;
+    font-size: 24px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    box-shadow: 4px 4px 10px rgb(114, 112, 112);
+    &:hover {
+      box-shadow: 4px 4px 10px rgb(29, 29, 29);
+    }
+    &:active {
+      transform: translate(2px);
+      box-shadow: none;
+    }
+  }
+}

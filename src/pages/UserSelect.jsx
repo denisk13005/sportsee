@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import karl from '../assets/karl.jpg'
 import cecilia from '../assets/cecilia.jpg'
@@ -6,8 +6,23 @@ import john from '../assets/john.jpg'
 import '../styles/pages/userSelect.scss'
 import TopNav from '../components/TopNav'
 import LeftNavBar from '../components/LeftNavBar'
+import { fetchMockDatas } from '../fetchMocks'
 
 const UserSelect = () => {
+  const [mockDatas, setMockDatas] = useState()
+
+  const loadMockDatas = async () => {
+    setMockDatas(await fetchMockDatas())
+  }
+
+  useEffect(() => {
+    loadMockDatas()
+  }, [])
+  const user_activity = mockDatas
+    ? mockDatas.USER_ACTIVITY.filter((el) => el.userId === 12)
+    : null
+  console.log(user_activity)
+
   return (
     <div className="userSelect">
       <TopNav />
