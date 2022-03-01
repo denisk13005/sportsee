@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/components/topNav.scss'
 import logo from '../assets/logo.svg'
+import { NavLink } from 'react-router-dom'
 /**
  * @returns {ReactElement}
  */
@@ -10,7 +11,9 @@ const TopNav = () => {
       <img src={logo} alt="logo" />
       <nav className="navigation">
         <ul>
-          <li>Acceuil</li>
+          <NavLink className="accueil" to="/">
+            Accueil
+          </NavLink>
           <li>Profil</li>
           <li>Réglage</li>
           <li>Communauté</li>
