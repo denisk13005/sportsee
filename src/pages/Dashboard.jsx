@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import LeftNavBar from '../components/LeftNavBar'
@@ -23,13 +24,12 @@ const Dashboard = () => {
 
   const [userMainDatas, setUserMainDatas] = useState()
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDatas = async () => {
     setUserMainDatas(await fetchUserMainDatas(userId))
   }
   useEffect(() => {
     getDatas()
-  }, [getDatas])
+  }, [])
   console.log(userMainDatas)
 
   return (
