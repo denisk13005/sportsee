@@ -11,6 +11,8 @@ import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
 import { useParams } from 'react-router-dom'
+import { fetchMainDatas } from '../fetchMocks'
+
 /**
  *
  * @returns {ReactElements}
@@ -19,18 +21,33 @@ const Dashboard = () => {
   /**
    * @param {object} datas users datas get from api
    */
-  const { userId } = useParams()
+  let { userId } = useParams()
   console.log(userId)
 
   const [userMainDatas, setUserMainDatas] = useState()
 
-  const getDatas = async () => {
-    setUserMainDatas(await fetchUserMainDatas(userId))
+  const loadDatas = async () => {
+    setUserMainDatas(await fetchMainDatas(userId))
   }
+
   useEffect(() => {
-    getDatas()
+    loadDatas()
   }, [])
-  console.log(userMainDatas)
+  if (userMainDatas) {
+    console.log(userMainDatas)
+    console.log(userMainDatas[0].userInfos)
+  }
+
+  // fetch API
+  // const [userMainDatas, setUserMainDatas] = useState()
+
+  // const getDatas = async () => {
+  //   setUserMainDatas(await fetchUserMainDatas(userId))
+  // }
+  // useEffect(() => {
+  //   getDatas()
+  // }, [])
+  // console.log(userMainDatas)
 
   return (
     <div>
@@ -38,7 +55,7 @@ const Dashboard = () => {
       <LeftNavBar />
       {userMainDatas ? (
         <div className="mainContent">
-          <Header userName={userMainDatas.data.userInfos.firstName} />
+          <Header userName={userMainDatas[0].userInfos.firstName} />
 
           <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
@@ -48,25 +65,25 @@ const Dashboard = () => {
             <aside className="dailyIntake">
               <CardInfo
                 icone={flammeRouge}
-                number={userMainDatas.data.keyData.calorieCount}
+                number={userMainDatas[0].keyData.calorieCount}
                 unit={'kCal'}
                 type={'Calorie'}
               />
               <CardInfo
                 icone={chicken}
-                number={userMainDatas.data.keyData.proteinCount}
+                number={userMainDatas[0].keyData.proteinCount}
                 unit={'g'}
                 type={'Protéines'}
               />
               <CardInfo
                 icone={apple}
-                number={userMainDatas.data.keyData.carbohydrateCount}
+                number={userMainDatas[0].keyData.carbohydrateCount}
                 unit={'g'}
                 type={'Glucides'}
               />
               <CardInfo
                 icone={burger}
-                number={userMainDatas.data.keyData.lipidCount}
+                number={userMainDatas[0].keyData.lipidCount}
                 unit={'g'}
                 type={'Lipides'}
               />
