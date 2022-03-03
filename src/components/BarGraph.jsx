@@ -10,8 +10,6 @@ import {
   Legend,
 } from 'recharts'
 const BarGraph = ({ activity }) => {
-  console.log(activity.sessions)
-
   return (
     <Fragment>
       <div className="description">
