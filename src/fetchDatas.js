@@ -40,10 +40,14 @@
  * @returns {Object} user  main datas
  */
 export const fetchMainDatas = async (userId) => {
-  const userMainDatas = await fetch(`data/data.json`)
-    .then((res) => res.json())
-    .then((data) => data.USER_MAIN_DATA)
-  return userMainDatas.filter((el) => el.id === parseInt(parseInt(userId)))
+  try {
+    const userMainDatas = await fetch(`data/data.json`)
+      .then((res) => res.json())
+      .then((data) => data.USER_MAIN_DATA)
+    return userMainDatas.filter((el) => el.id === parseInt(parseInt(userId)))
+  } catch (err) {
+    return console.log(err)
+  }
 }
 /**
  *
@@ -51,10 +55,14 @@ export const fetchMainDatas = async (userId) => {
  * @returns {object} user activity
  */
 export const fetchUserActivity = async (userId) => {
-  const userActivity = await fetch(`data/data.json`)
-    .then((res) => res.json())
-    .then((data) => data.USER_ACTIVITY)
-  return userActivity.filter((el) => el.userId === parseInt(parseInt(userId)))
+  try {
+    const userActivity = await fetch(`data/data.json`)
+      .then((res) => res.json())
+      .then((data) => data.USER_ACTIVITY)
+    return userActivity.filter((el) => el.userId === parseInt(parseInt(userId)))
+  } catch (err) {
+    console.log(err)
+  }
 }
 /**
  *
@@ -62,8 +70,23 @@ export const fetchUserActivity = async (userId) => {
  * @returns user average sessions
  */
 export const fetchUserAverageSessions = async (userId) => {
-  const userAverageSessions = await fetch(`data/data.json`)
-    .then((res) => res.json())
-    .then((data) => data.USER_AVERAGE_SESSIONS)
-  return userAverageSessions.filter((el) => el.userId === parseInt(userId))
+  try {
+    const userAverageSessions = await fetch(`data/data.json`)
+      .then((res) => res.json())
+      .then((data) => data.USER_AVERAGE_SESSIONS)
+    return userAverageSessions.filter((el) => el.userId === parseInt(userId))
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const fetchUserPerformance = async (userId) => {
+  try {
+    const userPerformance = await fetch(`data/data.json`)
+      .then((res) => res.json())
+      .then((data) => data.USER_PERFORMANCE)
+    return userPerformance.filter((el) => el.userId === parseInt(userId))
+  } catch (err) {
+    return console.log(err)
+  }
 }

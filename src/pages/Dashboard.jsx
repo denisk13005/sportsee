@@ -14,6 +14,7 @@ import {
   fetchMainDatas,
   fetchUserActivity,
   fetchUserAverageSessions,
+  fetchUserPerformance,
 } from '../fetchDatas'
 
 import BarGraph from '../components/BarGraph'
@@ -32,6 +33,7 @@ const Dashboard = () => {
   const [userMainDatas, setUserMainDatas] = useState()
   const [userActivity, setUserActivity] = useState()
   const [userAverageSessions, setUserAverageSessions] = useState()
+  const [userPerformance, setUserPerformance] = useState()
 
   const loadUserMainDatas = async () => {
     setUserMainDatas(await fetchMainDatas(userId))
@@ -42,14 +44,18 @@ const Dashboard = () => {
   const loadUserAverageSessions = async () => {
     setUserAverageSessions(await fetchUserAverageSessions(userId))
   }
+  const loadUserPerformance = async () => {
+    setUserPerformance(await fetchUserPerformance(userId))
+  }
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()
     loadUserAverageSessions()
+    loadUserPerformance()
   }, [userId])
 
   if (userMainDatas) {
-    console.log(userAverageSessions)
+    console.log(userPerformance)
   }
 
   // fetch API
