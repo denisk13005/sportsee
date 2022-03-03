@@ -88,7 +88,7 @@ const Dashboard = () => {
                 icone={flammeRouge}
                 number={userMainDatas[0].keyData.calorieCount}
                 unit={'kCal'}
-                type={'Calorie'}
+                type={'Calories'}
               />
               <CardInfo
                 icone={chicken}

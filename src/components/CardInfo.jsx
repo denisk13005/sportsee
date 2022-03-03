@@ -10,8 +10,10 @@ import '../styles/components/cardInfo.scss'
  */
 const CardInfo = ({ icone, number, unit, type }) => {
   return (
-    <div className="container">
-      <img src={icone} alt="icone" />
+    <div className="cardInfoContainer">
+      <div className="imgContainer" id={type}>
+        <img src={icone} alt="icone" />
+      </div>
       <div>
         <p className="numberAndUnit">
           {number}
