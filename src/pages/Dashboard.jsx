@@ -11,7 +11,8 @@ import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
 import { useParams } from 'react-router-dom'
-import { fetchMainDatas } from '../fetchMocks'
+import { fetchMainDatas, fetchUserActivity } from '../fetchMocks'
+import BarGraph from '../components/BarGraph'
 
 /**
  *
@@ -25,16 +26,24 @@ const Dashboard = () => {
   console.log(userId)
 
   const [userMainDatas, setUserMainDatas] = useState()
+  const [userActivity, setUserActivity] = useState()
 
-  const loadDatas = async () => {
+  const loadUserMainDatas = async () => {
     setUserMainDatas(await fetchMainDatas(userId))
   }
-
   useEffect(() => {
-    loadDatas()
+    loadUserMainDatas()
   }, [])
+  const loadUserActivity = async () => {
+    setUserActivity(await fetchUserActivity(userId))
+  }
+  useEffect(() => {
+    loadUserActivity()
+  }, [])
+
   if (userMainDatas) {
     console.log(userMainDatas)
+    console.log(userActivity)
     console.log(userMainDatas[0].userInfos)
   }
 
@@ -59,7 +68,9 @@ const Dashboard = () => {
 
           <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
-              <div className="dailyActivity"></div>
+              <div className="dailyActivity">
+                {userActivity ? <BarGraph activity={userActivity[0]} /> : null}
+              </div>
               <div className="otherGraph"></div>
             </section>
             <aside className="dailyIntake">
