@@ -23,22 +23,40 @@ const BarGraph = ({ activity }) => {
       </div>
       <ResponsiveContainer height={280} className="barGraphContainer">
         <BarChart data={activity.sessions} className="barChart">
-          <Bar dataKey="kilogram" barSize={7} radius={[5, 5, 0, 0]} />
           <Bar
+            yAxisId="right"
+            dataKey="kilogram"
+            barSize={7}
+            radius={[5, 5, 0, 0]}
+          />
+          <Bar
+            yAxisId="left"
             dataKey="calories"
             barSize={7}
             fill="red"
             radius={[5, 5, 0, 0]}
           />
+
           <XAxis
             stroke="transparant"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
+            // tickFormatter={}
           />
           <YAxis
+            yAxisId="left"
+            orientation="left"
+            stroke="transparant"
+            padding={{ bottom: 16 }}
+            hide
+            domain={['dataMin-150', 'dataMax+0']}
+          />
+          <YAxis
+            yAxisId="right"
             orientation="right"
             stroke="transparant"
             padding={{ bottom: 16 }}
             tick={{ stroke: '#74798c', fontWeight: 200 }}
+            domain={['dataMin-1', 'dataMax+0']}
           />
           <Tooltip
             separator=""
