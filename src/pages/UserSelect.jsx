@@ -5,21 +5,8 @@ import john from '../assets/john.jpg'
 import '../styles/pages/userSelect.scss'
 import TopNav from '../components/TopNav'
 import LeftNavBar from '../components/LeftNavBar'
-import { fetchMainDatas } from '../fetchMocks'
-import { useEffect, useState } from 'react'
 
 const UserSelect = () => {
-  let userId = 12
-  const [userMainDatas, setDatas] = useState()
-
-  const loadDatas = async () => {
-    setDatas(await fetchMainDatas(userId))
-  }
-
-  useEffect(() => {
-    loadDatas()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
   return (
     <div className="userSelect">
       <TopNav />
@@ -48,7 +35,7 @@ const UserSelect = () => {
           <NavLink className="navlink" to="/errorPage">
             <div className="userCard">
               <div className="imgContainer">
-                <img src={john} alt="karl " />
+                <img src={john} alt="john " />
               </div>
               <p>John</p>
               <p>Doe</p>

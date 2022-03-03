@@ -4,7 +4,6 @@ import Header from '../components/Header'
 import LeftNavBar from '../components/LeftNavBar'
 import TopNav from '../components/TopNav'
 import '../styles/pages/dashboard.scss'
-import { fetchUserMainDatas } from '../fetchDatas'
 import CardInfo from '../components/CardInfo'
 import flammeRouge from '../assets/flammeRouge.svg'
 import chicken from '../assets/PouletBleu.svg'
@@ -15,7 +14,7 @@ import {
   fetchMainDatas,
   fetchUserActivity,
   fetchUserAverageSessions,
-} from '../fetchMocks'
+} from '../fetchDatas'
 
 import BarGraph from '../components/BarGraph'
 
@@ -37,21 +36,17 @@ const Dashboard = () => {
   const loadUserMainDatas = async () => {
     setUserMainDatas(await fetchMainDatas(userId))
   }
-  useEffect(() => {
-    loadUserMainDatas()
-  }, [])
   const loadUserActivity = async () => {
     setUserActivity(await fetchUserActivity(userId))
   }
-  useEffect(() => {
-    loadUserActivity()
-  }, [])
   const loadUserAverageSessions = async () => {
     setUserAverageSessions(await fetchUserAverageSessions(userId))
   }
   useEffect(() => {
+    loadUserMainDatas()
+    loadUserActivity()
     loadUserAverageSessions()
-  }, [])
+  }, [userId])
 
   if (userMainDatas) {
     console.log(userAverageSessions)
