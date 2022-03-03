@@ -11,7 +11,12 @@ import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
 import { useParams } from 'react-router-dom'
-import { fetchMainDatas, fetchUserActivity } from '../fetchMocks'
+import {
+  fetchMainDatas,
+  fetchUserActivity,
+  fetchUserAverageSessions,
+} from '../fetchMocks'
+
 import BarGraph from '../components/BarGraph'
 
 /**
@@ -27,6 +32,7 @@ const Dashboard = () => {
 
   const [userMainDatas, setUserMainDatas] = useState()
   const [userActivity, setUserActivity] = useState()
+  const [userAverageSessions, setUserAverageSessions] = useState()
 
   const loadUserMainDatas = async () => {
     setUserMainDatas(await fetchMainDatas(userId))
@@ -40,11 +46,15 @@ const Dashboard = () => {
   useEffect(() => {
     loadUserActivity()
   }, [])
+  const loadUserAverageSessions = async () => {
+    setUserAverageSessions(await fetchUserAverageSessions(userId))
+  }
+  useEffect(() => {
+    loadUserAverageSessions()
+  }, [])
 
   if (userMainDatas) {
-    console.log(userMainDatas)
-    console.log(userActivity)
-    console.log(userMainDatas[0].userInfos)
+    console.log(userAverageSessions)
   }
 
   // fetch API
