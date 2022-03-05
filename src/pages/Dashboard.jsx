@@ -48,7 +48,7 @@ const Dashboard = () => {
     //MOCK DATAS
     else {
       const id = datas[0].id
-      const score = datas[0].score
+      const score = datas[0].todayScore || datas[0].score
       const userInfos = datas[0].userInfos
       const keyData = datas[0].keyData
       setUserMainDatas({ id, score, keyData, userInfos })
@@ -97,7 +97,7 @@ const Dashboard = () => {
   }, [userId])
 
   if (userMainDatas) {
-    console.log(userActivity)
+    console.log(userMainDatas)
   }
 
   return (
