@@ -35,30 +35,65 @@ const Dashboard = () => {
   const [userAverageSessions, setUserAverageSessions] = useState()
   const [userPerformance, setUserPerformance] = useState()
 
+  // DATAS PROCESSING
   const loadUserMainDatas = async () => {
     const datas = await fetchMainDatas(userId)
-    console.log(datas)
+    //fetch API
     if (datas.data) {
       const id = datas.data.id
       const score = datas.data.score
       const userInfos = datas.data.userInfos
       setUserMainDatas({ id, score, userInfos })
-    } else {
+    }
+    //MOCK DATAS
+    else {
       const id = datas[0].id
       const score = datas[0].score
       const userInfos = datas[0].userInfos
       setUserMainDatas({ id, score, userInfos })
     }
   }
+
   const loadUserActivity = async () => {
-    setUserActivity(await fetchUserActivity(userId))
+    const datas = await fetchUserActivity(userId)
+    console.log(datas)
+    if (datas.data) {
+      const sessions = datas.data.sessions
+      console.log(sessions)
+      setUserActivity(sessions)
+    } else {
+      const sessions = datas[0].sessions
+      console.log(sessions)
+      setUserActivity(sessions)
+    }
   }
   const loadUserAverageSessions = async () => {
-    setUserAverageSessions(await fetchUserAverageSessions(userId))
+    const datas = await fetchUserAverageSessions(userId)
+    console.log(datas)
+    if (datas.data) {
+      const sessions = datas.data.sessions
+      console.log(sessions)
+      setUserAverageSessions(sessions)
+    } else {
+      const sessions = datas[0].sessions
+      console.log(sessions)
+      setUserAverageSessions(sessions)
+    }
   }
   const loadUserPerformance = async () => {
-    setUserPerformance(await fetchUserPerformance(userId))
+    const datas = await fetchUserPerformance(userId)
+    console.log(datas)
+    if (datas.data) {
+      const performances = datas.data.data
+      const kind = datas.kind
+      setUserPerformance({ performances, kind })
+    } else {
+      const sessions = datas[0].sessions
+      console.log(sessions)
+      setUserAverageSessions(sessions)
+    }
   }
+
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()
@@ -67,7 +102,7 @@ const Dashboard = () => {
   }, [userId])
 
   if (userMainDatas) {
-    console.log(userMainDatas)
+    console.log(userPerformance)
   }
 
   // fetch API
