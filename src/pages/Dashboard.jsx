@@ -36,7 +36,19 @@ const Dashboard = () => {
   const [userPerformance, setUserPerformance] = useState()
 
   const loadUserMainDatas = async () => {
-    setUserMainDatas(await fetchMainDatas(userId))
+    const datas = await fetchMainDatas(userId)
+    console.log(datas)
+    if (datas.data) {
+      const id = datas.data.id
+      const score = datas.data.score
+      const userInfos = datas.data.userInfos
+      setUserMainDatas({ id, score, userInfos })
+    } else {
+      const id = datas[0].id
+      const score = datas[0].score
+      const userInfos = datas[0].userInfos
+      setUserMainDatas({ id, score, userInfos })
+    }
   }
   const loadUserActivity = async () => {
     setUserActivity(await fetchUserActivity(userId))
@@ -75,42 +87,42 @@ const Dashboard = () => {
       <LeftNavBar />
       {userMainDatas ? (
         <div className="mainContent">
-          <Header userName={userMainDatas[0].userInfos.firstName} />
+          <Header userName={userMainDatas.userInfos.firstName} />
 
-          <div className="graphsAndDailyContainer">
+          {/* <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
               <div className="dailyActivity">
-                {userActivity ? <BarGraph activity={userActivity[0]} /> : null}
+                {userActivity ? <BarGraph activity={userActivity} /> : null}
               </div>
               <div className="otherGraph"></div>
             </section>
             <aside className="dailyIntake">
               <CardInfo
                 icone={flammeRouge}
-                number={userMainDatas[0].keyData.calorieCount}
+                number={userMainDatas.keyData.calorieCount}
                 unit={'kCal'}
                 type={'Calories'}
               />
               <CardInfo
                 icone={chicken}
-                number={userMainDatas[0].keyData.proteinCount}
+                number={userMainDatas.keyData.proteinCount}
                 unit={'g'}
                 type={'Protéines'}
               />
               <CardInfo
                 icone={apple}
-                number={userMainDatas[0].keyData.carbohydrateCount}
+                number={userMainDatas.keyData.carbohydrateCount}
                 unit={'g'}
                 type={'Glucides'}
               />
               <CardInfo
                 icone={burger}
-                number={userMainDatas[0].keyData.lipidCount}
+                number={userMainDatas.keyData.lipidCount}
                 unit={'g'}
                 type={'Lipides'}
               />
             </aside>
-          </div>
+          </div> */}
         </div>
       ) : null}
     </div>

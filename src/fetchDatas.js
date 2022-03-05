@@ -1,4 +1,4 @@
-///////FETCH API
+// /////FETCH API
 
 // export const fetchMainDatas = async (userId) => {
 //   const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
@@ -16,7 +16,7 @@
 
 //   return userActivity
 // }
-// export const fetchUserAverageSession = async (userId) => {
+// export const fetchUserAverageSessions = async (userId) => {
 //   const UserAverageSession = await fetch(
 //     `http://localhost:5000/user/${userId}/activity`
 //   )
