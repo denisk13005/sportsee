@@ -1,4 +1,6 @@
-// export const fetchUserMainDatas = async (userId) => {
+///////FETCH API
+
+// export const fetchMainDatas = async (userId) => {
 //   const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
 //     .then((res) => res.json())
 //     .then((data) => data)

@@ -1,9 +1,10 @@
 import React from 'react'
 import '../styles/components/cardInfo.scss'
+import PropTypes from 'prop-types'
 /**
  * Card info component
  * @param {string} icone
- * @param {string} number
+ * @param {number} number
  * @param {string} unit
  * @param {string} type
  * @returns {ReactElement} card info of daily intake
@@ -23,6 +24,12 @@ const CardInfo = ({ icone, number, unit, type }) => {
       </div>
     </div>
   )
+}
+CardInfo.propTypes = {
+  icone: PropTypes.string,
+  number: PropTypes.number,
+  unit: PropTypes.string,
+  type: PropTypes.string,
 }
 
 export default CardInfo

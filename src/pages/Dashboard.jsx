@@ -55,7 +55,7 @@ const Dashboard = () => {
   }, [userId])
 
   if (userMainDatas) {
-    console.log(userPerformance)
+    console.log(userMainDatas)
   }
 
   // fetch API

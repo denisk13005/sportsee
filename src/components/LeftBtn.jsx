@@ -15,7 +15,7 @@ const LeftBtn = ({ icone }) => {
   )
 }
 LeftBtn.propTypes = {
-  test: PropTypes.string,
+  icone: PropTypes.string,
 }
 
 export default LeftBtn

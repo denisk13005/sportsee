@@ -8,10 +8,11 @@ import {
   YAxis,
   Bar,
   Legend,
+  CartesianGrid,
 } from 'recharts'
 const BarGraph = ({ activity }) => {
   return (
-    <Fragment>
+    <>
       <div className="description">
         <p>Activité quotidienne</p>
         <ul>
@@ -19,8 +20,9 @@ const BarGraph = ({ activity }) => {
           <li className="cal">Calories brûlées (kCal)</li>
         </ul>
       </div>
-      <ResponsiveContainer height={280} className="barGraphContainer">
+      <ResponsiveContainer height={270}>
         <BarChart data={activity.sessions} className="barChart">
+          <CartesianGrid strokeDasharray="3 3" />
           <Bar
             yAxisId="right"
             dataKey="kilogram"
@@ -63,7 +65,7 @@ const BarGraph = ({ activity }) => {
           />
         </BarChart>
       </ResponsiveContainer>
-    </Fragment>
+    </>
   )
 }
 
