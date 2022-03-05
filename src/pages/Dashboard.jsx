@@ -28,7 +28,6 @@ const Dashboard = () => {
    * @param {object} datas users datas get from api
    */
   let { userId } = useParams()
-  console.log(userId)
 
   const [userMainDatas, setUserMainDatas] = useState()
   const [userActivity, setUserActivity] = useState()
@@ -38,6 +37,7 @@ const Dashboard = () => {
   // DATAS PROCESSING
   const loadUserMainDatas = async () => {
     const datas = await fetchMainDatas(userId)
+    console.log(datas)
     //fetch API
     if (datas.data) {
       const id = datas.data.id
@@ -50,39 +50,33 @@ const Dashboard = () => {
       const id = datas[0].id
       const score = datas[0].score
       const userInfos = datas[0].userInfos
-      setUserMainDatas({ id, score, userInfos })
+      const keyData = datas[0].keyData
+      setUserMainDatas({ id, score, keyData, userInfos })
     }
   }
 
   const loadUserActivity = async () => {
     const datas = await fetchUserActivity(userId)
-    console.log(datas)
     if (datas.data) {
       const sessions = datas.data.sessions
-      console.log(sessions)
       setUserActivity(sessions)
     } else {
       const sessions = datas[0].sessions
-      console.log(sessions)
       setUserActivity(sessions)
     }
   }
   const loadUserAverageSessions = async () => {
     const datas = await fetchUserAverageSessions(userId)
-    console.log(datas)
     if (datas.data) {
       const sessions = datas.data.sessions
-      console.log(sessions)
       setUserAverageSessions(sessions)
     } else {
       const sessions = datas[0].sessions
-      console.log(sessions)
       setUserAverageSessions(sessions)
     }
   }
   const loadUserPerformance = async () => {
     const datas = await fetchUserPerformance(userId)
-    console.log(datas)
     if (datas.data) {
       const performances = datas.data.data
       const kind = datas.kind
@@ -103,19 +97,8 @@ const Dashboard = () => {
   }, [userId])
 
   if (userMainDatas) {
-    console.log(userPerformance)
+    console.log(userActivity)
   }
-
-  // fetch API
-  // const [userMainDatas, setUserMainDatas] = useState()
-
-  // const getDatas = async () => {
-  //   setUserMainDatas(await fetchUserMainDatas(userId))
-  // }
-  // useEffect(() => {
-  //   getDatas()
-  // }, [])
-  // console.log(userMainDatas)
 
   return (
     <div>
@@ -125,7 +108,7 @@ const Dashboard = () => {
         <div className="mainContent">
           <Header userName={userMainDatas.userInfos.firstName} />
 
-          {/* <div className="graphsAndDailyContainer">
+          <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
               <div className="dailyActivity">
                 {userActivity ? <BarGraph activity={userActivity} /> : null}
@@ -158,7 +141,7 @@ const Dashboard = () => {
                 type={'Lipides'}
               />
             </aside>
-          </div> */}
+          </div>
         </div>
       ) : null}
     </div>

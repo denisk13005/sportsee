@@ -21,7 +21,7 @@ const BarGraph = ({ activity }) => {
         </ul>
       </div>
       <ResponsiveContainer height={270}>
-        <BarChart data={activity.sessions} className="barChart">
+        <BarChart data={activity} className="barChart">
           <CartesianGrid strokeDasharray="3 3" />
           <Bar
             yAxisId="right"
