@@ -88,9 +88,10 @@ const Dashboard = () => {
       const kind = datas.kind
       setUserPerformance({ performances, kind })
     } else {
-      const sessions = datas[0].sessions
-      console.log(sessions)
-      setUserAverageSessions(sessions)
+      const performances = datas[0].data
+      const kind = datas[0].kind
+
+      setUserPerformance({ performances, kind })
     }
   }
 
