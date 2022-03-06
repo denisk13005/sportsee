@@ -40,8 +40,13 @@ const BarGraph = ({ activity }) => {
           <li className="cal">Calories brûlées (kCal)</li>
         </ul>
       </div>
-      <ResponsiveContainer height={270}>
+      <ResponsiveContainer height={270} width="100%">
         <BarChart data={activity} className="barChart">
+          <Tooltip
+            content={<CustomTooltip />}
+            wrapperStyle={{ top: -70, left: 27 }}
+            cursor={{ opacity: 0.4 }}
+          />
           <CartesianGrid strokeDasharray="2" vertical="" />
           <Bar
             yAxisId="right"
@@ -58,30 +63,26 @@ const BarGraph = ({ activity }) => {
           />
 
           <XAxis
-            stroke="transparant"
+            stroke="#74798c"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
             dataKey="day"
-          />
-          <YAxis
-            yAxisId="left"
-            orientation="left"
-            stroke="transparant"
-            // padding={{ bottom: 16 }}
-            hide
-            domain={['dataMin-150', 'dataMax']}
+            padding={{ left: -50, right: -50 }}
           />
           <YAxis
             yAxisId="right"
             orientation="right"
             stroke="transparant"
-            // padding={{ bottom: 16 }}
             tick={{ stroke: '#74798c', fontWeight: 200 }}
-            domain={['dataMin-1', 'dataMax+1']}
+            domain={['dataMin-1', 'dataMax']}
+            tickCount={3}
           />
-          <Tooltip
-            cursor={false}
-            content={<CustomTooltip />}
-            wrapperStyle={{ top: -70, left: 27 }}
+          <YAxis
+            yAxisId="left"
+            orientation="left"
+            stroke="transparant"
+            hide
+            domain={['dataMin-150', 'dataMax']}
+            // tickCount={4}
           />
         </BarChart>
       </ResponsiveContainer>
