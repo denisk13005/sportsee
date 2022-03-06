@@ -24,6 +24,13 @@ const BarGraph = ({ activity }) => {
     return null
   }
 
+  const formatDate = () => {
+    activity.forEach((date) => {
+      date.day = activity.indexOf(date) + 1
+    })
+  }
+  formatDate()
+
   return (
     <>
       <div className="description">
@@ -35,7 +42,7 @@ const BarGraph = ({ activity }) => {
       </div>
       <ResponsiveContainer height={270}>
         <BarChart data={activity} className="barChart">
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="2" vertical="" />
           <Bar
             yAxisId="right"
             dataKey="kilogram"
@@ -53,25 +60,29 @@ const BarGraph = ({ activity }) => {
           <XAxis
             stroke="transparant"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
-            // tickFormatter={}
+            dataKey="day"
           />
           <YAxis
             yAxisId="left"
             orientation="left"
             stroke="transparant"
-            padding={{ bottom: 16 }}
+            // padding={{ bottom: 16 }}
             hide
-            domain={['dataMin-150', 'dataMax+0']}
+            domain={['dataMin-150', 'dataMax']}
           />
           <YAxis
             yAxisId="right"
             orientation="right"
             stroke="transparant"
-            padding={{ bottom: 16 }}
+            // padding={{ bottom: 16 }}
             tick={{ stroke: '#74798c', fontWeight: 200 }}
-            domain={['dataMin-1', 'dataMax+0']}
+            domain={['dataMin-1', 'dataMax+1']}
           />
-          <Tooltip cursor={false} content={<CustomTooltip />} />
+          <Tooltip
+            cursor={false}
+            content={<CustomTooltip />}
+            wrapperStyle={{ top: -70, left: 27 }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </>
