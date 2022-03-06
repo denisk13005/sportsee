@@ -116,7 +116,7 @@ const Dashboard = () => {
               </div>
               <div className="otherGraph">
                 <div className="averageSessions">
-                  <p>
+                  <p className="pDescription">
                     Durée moyenne des <br />
                     sessions
                   </p>

@@ -11,10 +11,10 @@ import {
   CartesianGrid,
 } from 'recharts'
 const BarGraph = ({ activity }) => {
-  const CustomTooltip = ({ active, payload }) => {
+  const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {
       return (
-        <div className="customTooltip">
+        <div className="customTooltipActivity">
           <p>{`${payload[0].value}Kg`}</p>
           <p>{`${payload[1].value}Kcal`}</p>
         </div>
@@ -43,7 +43,7 @@ const BarGraph = ({ activity }) => {
       <ResponsiveContainer height={270} width="100%">
         <BarChart data={activity} className="barChart">
           <Tooltip
-            content={<CustomTooltip />}
+            content={<CustomTooltipActivity />}
             wrapperStyle={{ top: -70, left: 27 }}
             cursor={{ opacity: 0.4 }}
           />

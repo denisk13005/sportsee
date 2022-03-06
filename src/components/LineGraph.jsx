@@ -8,6 +8,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from 'recharts'
+import '../styles/components/lineGraph.scss'
 const LineGraph = ({ average }) => {
   average = [
     { day: '', sessionLength: 20 },
@@ -15,6 +16,18 @@ const LineGraph = ({ average }) => {
     { day: '', sessionLength: 20 },
   ]
   console.log(average)
+
+  const CustomTooltipAverage = ({ active, payload }) => {
+    if (active && payload[0].payload.day !== '') {
+      return (
+        <div className="customTooltipAverage">
+          <p className="pCustomTooltipAverage">{`${payload[0].value}min`}</p>
+        </div>
+      )
+    }
+
+    return null
+  }
 
   return (
     <ResponsiveContainer
@@ -27,7 +40,11 @@ const LineGraph = ({ average }) => {
         margin={{ left: -80, right: -10 }}
         className="lineChart"
       >
-        <Tooltip />
+        <Tooltip
+          content={<CustomTooltipAverage />}
+          s
+          cursor={{ opacity: 0.4 }}
+        />
         <XAxis
           dataKey="day"
           stroke="transparant"
