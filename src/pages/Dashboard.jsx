@@ -18,6 +18,7 @@ import {
 } from '../fetchDatas'
 
 import BarGraph from '../components/BarGraph'
+import LineGraph from '../components/LineGraph'
 
 /**
  *
@@ -96,8 +97,8 @@ const Dashboard = () => {
     loadUserPerformance()
   }, [userId])
 
-  if (userMainDatas) {
-    console.log(userMainDatas)
+  if (userAverageSessions) {
+    console.log(userAverageSessions)
   }
 
   return (
@@ -113,7 +114,19 @@ const Dashboard = () => {
               <div className="dailyActivity">
                 {userActivity ? <BarGraph activity={userActivity} /> : null}
               </div>
-              <div className="otherGraph"></div>
+              <div className="otherGraph">
+                <div className="averageSessions">
+                  <p>
+                    Durée moyenne des <br />
+                    sessions
+                  </p>
+                  {userAverageSessions ? (
+                    <LineGraph average={userAverageSessions} />
+                  ) : null}
+                </div>
+                <div className="performances"></div>
+                <div className="score"></div>
+              </div>
             </section>
             <aside className="dailyIntake">
               <CardInfo

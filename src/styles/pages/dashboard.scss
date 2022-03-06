@@ -19,6 +19,38 @@
         width: 100%;
         height: 263px;
         margin-top: 30px;
+        border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+        .averageSessions {
+          background-color: #ff0000;
+          width: 258px;
+          height: 263px;
+          border-radius: 5px;
+          p {
+            font-size: 15px;
+            color: aliceblue;
+            opacity: 0.6;
+            margin-top: 29px;
+            margin-left: 34px;
+          }
+          .lineGraphContainer {
+          }
+          .lineChart {
+          }
+        }
+        .performances {
+          background-color: aqua;
+          width: 258px;
+          height: 263px;
+          border-radius: 5px;
+        }
+        .score {
+          background-color: royalblue;
+          width: 258px;
+          height: 263px;
+          border-radius: 5px;
+        }
       }
     }
     .dailyIntake {
