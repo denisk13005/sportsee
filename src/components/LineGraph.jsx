@@ -11,12 +11,17 @@ import {
 import '../styles/components/lineGraph.scss'
 const LineGraph = ({ average }) => {
   average = [
-    { day: '', sessionLength: 20 },
+    { day: '', sessionLength: 30 },
     ...average,
-    { day: '', sessionLength: 20 },
+    { day: '', sessionLength: 30 },
   ]
   console.log(average)
+  const day = ['', 'L', 'M', 'M', 'J', 'V', 'S', 'D', '']
 
+  average.forEach((el, index) => (el.day = day[index]))
+
+  console.log(day)
+  console.log(average)
   const CustomTooltipAverage = ({ active, payload }) => {
     if (active && payload[0].payload.day !== '') {
       return (
@@ -50,6 +55,7 @@ const LineGraph = ({ average }) => {
           stroke="transparant"
           fontSize={12}
           tick={{ fill: 'white', opacity: 0.6 }}
+          margin={{ right: -50 }}
         />
         <YAxis domain={['dataMin-10', 'dataMax+5']} stroke="none" />
         <Line
