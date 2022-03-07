@@ -7,9 +7,9 @@ import {
   XAxis,
   YAxis,
   Bar,
-  Legend,
   CartesianGrid,
 } from 'recharts'
+
 const BarGraph = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {
@@ -23,6 +23,10 @@ const BarGraph = ({ activity }) => {
 
     return null
   }
+
+  // const CustomTooltipActivityCursor = () => {
+  //   return <div className="customTooltipActivityCursor">test</div>
+  // }
 
   const formatDate = () => {
     activity.forEach((date) => {
@@ -44,8 +48,8 @@ const BarGraph = ({ activity }) => {
         <BarChart data={activity} className="barChart">
           <Tooltip
             content={<CustomTooltipActivity />}
-            wrapperStyle={{ top: -70, left: 27 }}
-            cursor={{ opacity: 0.4 }}
+            // cursor={{ opacity: 0.4 }}
+            cursor={<CustomTooltipActivityCursor />}
           />
           <CartesianGrid strokeDasharray="2" vertical="" />
           <Bar
