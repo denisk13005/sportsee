@@ -44,7 +44,8 @@ const Dashboard = () => {
       const id = datas.data.id
       const score = datas.data.score
       const userInfos = datas.data.userInfos
-      setUserMainDatas({ id, score, userInfos })
+      const keyData = datas.data.keyData
+      setUserMainDatas({ id, score, userInfos, keyData })
     }
     //MOCK DATAS
     else {
@@ -98,7 +99,7 @@ const Dashboard = () => {
   }, [userId])
 
   if (userPerformance) {
-    console.log(userPerformance)
+    console.log(userAverageSessions)
   }
 
   return (
@@ -125,9 +126,9 @@ const Dashboard = () => {
                   ) : null}
                 </div>
                 <div className="performances">
-                  {userPerformance ? (
+                  {/* {userPerformance ? (
                     <RadarGraph performances={userPerformance} />
-                  ) : null}
+                  ) : null} */}
                 </div>
                 <div className="score"></div>
               </div>

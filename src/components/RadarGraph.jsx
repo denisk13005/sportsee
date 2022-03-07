@@ -21,14 +21,25 @@ const RadarGraph = ({ performances }) => {
   for (let i = 0; i < frenchTranslation.length; i++) {
     performances.kind[i + 1] = frenchTranslation[i]
   }
-  console.log(performances.kind)
+  performances.performances.forEach(
+    (el, index) => (el.kind = performances.kind[index + 1])
+  )
+  console.log(performances.performances)
+  performances.performances.reverse()
   return (
-    <ResponsiveContainer>
-      <RadarChart data={performances.performances}>
-        <PolarGrid />
-        <PolarAngleAxis dataKey="kind" />
-        {/* <PolarRadiusAxis angle={30} domain={[0, 150]} /> */}
-        <Radar dataKey="value" />
+    <ResponsiveContainer width="100%">
+      <RadarChart
+        data={performances.performances}
+        cx="50%"
+        cy="50%"
+        outerRadius="75%"
+      >
+        <PolarGrid radialLines={false} fill="white" />
+        <PolarAngleAxis
+          dataKey="kind"
+          tick={{ fill: 'white', fontSize: '12' }}
+        />
+        <Radar dataKey="value" fill="red" opacity={0.8} />
       </RadarChart>
     </ResponsiveContainer>
   )

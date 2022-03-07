@@ -9,6 +9,7 @@ import {
 } from 'recharts'
 import '../styles/components/lineGraph.scss'
 const LineGraph = ({ average }) => {
+  console.log(average)
   average = [
     { day: '', sessionLength: 30 },
     ...average,
@@ -19,6 +20,7 @@ const LineGraph = ({ average }) => {
   average.forEach((el, index) => (el.day = day[index]))
 
   const CustomTooltipAverage = ({ active, payload }) => {
+    console.log(payload)
     if (active && payload[0].payload.day !== '') {
       return (
         <div className="customTooltipAverage">
