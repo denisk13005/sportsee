@@ -48,8 +48,8 @@ const BarGraph = ({ activity }) => {
         <BarChart data={activity} className="barChart">
           <Tooltip
             content={<CustomTooltipActivity />}
-            // cursor={{ opacity: 0.4 }}
-            cursor={<CustomTooltipActivityCursor />}
+            cursor={{ opacity: 0.4 }}
+            // cursor={<CustomTooltipActivityCursor />}
           />
           <CartesianGrid strokeDasharray="2" vertical="" />
           <Bar

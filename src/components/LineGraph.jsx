@@ -6,7 +6,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  CartesianGrid,
 } from 'recharts'
 import '../styles/components/lineGraph.scss'
 const LineGraph = ({ average }) => {
@@ -15,13 +14,10 @@ const LineGraph = ({ average }) => {
     ...average,
     { day: '', sessionLength: 30 },
   ]
-  console.log(average)
   const day = ['', 'L', 'M', 'M', 'J', 'V', 'S', 'D', '']
 
   average.forEach((el, index) => (el.day = day[index]))
 
-  console.log(day)
-  console.log(average)
   const CustomTooltipAverage = ({ active, payload }) => {
     if (active && payload[0].payload.day !== '') {
       return (
