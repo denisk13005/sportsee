@@ -19,6 +19,7 @@ import {
 
 import BarGraph from '../components/BarGraph'
 import LineGraph from '../components/LineGraph'
+import RadarGraph from '../components/RadarGraph'
 
 /**
  *
@@ -38,7 +39,6 @@ const Dashboard = () => {
   // DATAS PROCESSING
   const loadUserMainDatas = async () => {
     const datas = await fetchMainDatas(userId)
-    console.log(datas)
     //fetch API
     if (datas.data) {
       const id = datas.data.id
@@ -97,8 +97,8 @@ const Dashboard = () => {
     loadUserPerformance()
   }, [userId])
 
-  if (userAverageSessions) {
-    console.log(userAverageSessions)
+  if (userPerformance) {
+    console.log(userPerformance)
   }
 
   return (
@@ -124,7 +124,11 @@ const Dashboard = () => {
                     <LineGraph average={userAverageSessions} />
                   ) : null}
                 </div>
-                <div className="performances"></div>
+                <div className="performances">
+                  {userPerformance ? (
+                    <RadarGraph performances={userPerformance} />
+                  ) : null}
+                </div>
                 <div className="score"></div>
               </div>
             </section>
