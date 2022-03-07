@@ -8,6 +8,7 @@ import {
   YAxis,
   Bar,
   CartesianGrid,
+  Rectangle,
 } from 'recharts'
 
 const BarGraph = ({ activity }) => {
@@ -23,10 +24,6 @@ const BarGraph = ({ activity }) => {
 
     return null
   }
-
-  // const CustomTooltipActivityCursor = () => {
-  //   return <div className="customTooltipActivityCursor">test</div>
-  // }
 
   const formatDate = () => {
     activity.forEach((date) => {
@@ -49,9 +46,8 @@ const BarGraph = ({ activity }) => {
           <Tooltip
             content={<CustomTooltipActivity />}
             cursor={{ opacity: 0.4 }}
-            // cursor={<CustomTooltipActivityCursor />}
           />
-          <CartesianGrid strokeDasharray="2" vertical="" />
+          <CartesianGrid strokeDasharray="1" vertical="" />
           <Bar
             yAxisId="right"
             dataKey="kilogram"
@@ -70,7 +66,7 @@ const BarGraph = ({ activity }) => {
             stroke="#74798c"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
             dataKey="day"
-            padding={{ left: -50, right: -50 }}
+            // padding={{ left: -50, right: -50 }}
           />
           <YAxis
             yAxisId="right"

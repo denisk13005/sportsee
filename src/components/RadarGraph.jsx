@@ -24,16 +24,10 @@ const RadarGraph = ({ performances }) => {
   performances.performances.forEach(
     (el, index) => (el.kind = performances.kind[index + 1])
   )
-  console.log(performances.performances)
   performances.performances.reverse()
   return (
     <ResponsiveContainer width="100%">
-      <RadarChart
-        data={performances.performances}
-        cx="50%"
-        cy="50%"
-        outerRadius="75%"
-      >
+      <RadarChart data={performances.performances} outerRadius="73%">
         <PolarGrid radialLines={false} fill="white" />
         <PolarAngleAxis
           dataKey="kind"

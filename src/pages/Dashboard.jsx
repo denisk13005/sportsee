@@ -81,7 +81,7 @@ const Dashboard = () => {
     const datas = await fetchUserPerformance(userId)
     if (datas.data) {
       const performances = datas.data.data
-      const kind = datas.kind
+      const kind = datas.data.kind
       setUserPerformance({ performances, kind })
     } else {
       const performances = datas[0].data
@@ -126,9 +126,9 @@ const Dashboard = () => {
                   ) : null}
                 </div>
                 <div className="performances">
-                  {/* {userPerformance ? (
+                  {userPerformance ? (
                     <RadarGraph performances={userPerformance} />
-                  ) : null} */}
+                  ) : null}
                 </div>
                 <div className="score"></div>
               </div>
