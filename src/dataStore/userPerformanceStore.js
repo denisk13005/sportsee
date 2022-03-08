@@ -1,4 +1,6 @@
 import { fetchUserPerformance } from '../fetchDatas'
+import PropTypes from 'prop-types'
+
 /**
  *
  * @param {number} userId
@@ -38,5 +40,8 @@ const getUserPerformance = async (userId) => {
     datas[0].data.reverse()
     return datas[0].data
   }
+}
+getUserPerformance.propTypes = {
+  userId: PropTypes.number.isRequired,
 }
 export default getUserPerformance

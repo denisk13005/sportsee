@@ -26,71 +26,133 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import LeftNavBar from '../components/LeftNavBar'
 import TopNav from '../components/TopNav'
 import '../styles/pages/dashboard.scss'
-import fetchDatas from '../fetchDatas'
 import CardInfo from '../components/CardInfo'
 import flammeRouge from '../assets/flammeRouge.svg'
 import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
+import { useParams } from 'react-router-dom'
+import getMainDatas from '../dataStore/mainDataStore'
+import getUserActivity from '../dataStore/userActivityStore'
+import getUserAverageSessions from '../dataStore/userAverageSessionsStore'
+import BarGraph from '../components/BarGraph'
+import LineGraph from '../components/LineGraph'
+import RadarGraph from '../components/RadarGraph'
+import SimpleRadialBarChart from '../components/SimpleRadialBarChart'
+import getUserPerformance from '../dataStore/userPerformanceStore'
+
 /**
- *
- * @returns {ReactElements}
+ *Dashboard
+ * @returns {ReactElements} different components constituting the dashboard
  */
 const Dashboard = () => {
-  /**
-   * @param {object} datas users datas get from api
-   */
-  const [datas, setDatas] = useState()
+  let { userId } = useParams()
 
-  const getDatas = async () => {
-    setDatas(await fetchDatas())
+  const [userMainDatas, setUserMainDatas] = useState()
+  const [userActivity, setUserActivity] = useState()
+  const [userAverageSessions, setUserAverageSessions] = useState()
+  const [userPerformance, setUserPerformance] = useState()
+
+  // DATAS PROCESSING
+  const loadUserMainDatas = async () => {
+    const datas = await getMainDatas(userId)
+    setUserMainDatas(datas)
   }
+
+  const loadUserActivity = async () => {
+    const datas = await getUserActivity(userId)
+    setUserActivity(datas)
+  }
+  const loadUserAverageSessions = async () => {
+    const datas = await getUserAverageSessions(userId)
+    setUserAverageSessions(datas)
+  }
+  const loadUserPerformance = async () => {
+    const datas = await getUserPerformance(userId)
+    setUserPerformance(datas)
+  }
+
   useEffect(() => {
-    getDatas()
-  }, [])
-  if (datas) {
-    console.log(datas)
-  }
+    loadUserMainDatas()
+    loadUserActivity()
+    loadUserAverageSessions()
+    loadUserPerformance()
+  }, [userId])
+
   return (
     &lt;div>
       &lt;TopNav />
       &lt;LeftNavBar />
-      {datas ? (
+      {userMainDatas ? (
         &lt;div className="mainContent">
-          &lt;Header userName={datas.data.userInfos.firstName} />
+          &lt;Header userName={userMainDatas.userInfos.firstName} />
 
           &lt;div className="graphsAndDailyContainer">
             &lt;section className="graphsContainer">
-              &lt;div className="dailyActivity">&lt;/div>
-              &lt;div className="otherGraph">&lt;/div>
+              &lt;div className="dailyActivity">
+                {userActivity ? &lt;BarGraph activity={userActivity} /> : null}
+              &lt;/div>
+              &lt;div className="otherGraph">
+                &lt;div className="averageSessions">
+                  &lt;p className="pDescription">
+                    Durée moyenne des &lt;br />
+                    sessions
+                  &lt;/p>
+                  {userAverageSessions ? (
+                    &lt;LineGraph average={userAverageSessions} />
+                  ) : null}
+                &lt;/div>
+                &lt;div className="performances">
+                  {userPerformance ? (
+                    &lt;RadarGraph performances={userPerformance} />
+                  ) : null}
+                &lt;/div>
+                &lt;div className="score">
+                  &lt;p className="pScore">Score&lt;/p>
+                  &lt;div className="radarBarChart">
+                    &lt;SimpleRadialBarChart
+                      userMainDatas={userMainDatas}
+                      className="radar"
+                    />
+                    &lt;div className="userObjectif">
+                      &lt;p className="percent"> {userMainDatas.score * 100}%&lt;/p>
+                      &lt;p>
+                        de votre &lt;br />
+                        objectif
+                      &lt;/p>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
             &lt;/section>
             &lt;aside className="dailyIntake">
               &lt;CardInfo
                 icone={flammeRouge}
-                number={datas.data.keyData.calorieCount}
+                number={userMainDatas.keyData.calorieCount}
                 unit={'kCal'}
-                type={'Calorie'}
+                type={'Calories'}
               />
               &lt;CardInfo
                 icone={chicken}
-                number={datas.data.keyData.proteinCount}
+                number={userMainDatas.keyData.proteinCount}
                 unit={'g'}
                 type={'Protéines'}
               />
               &lt;CardInfo
                 icone={apple}
-                number={datas.data.keyData.carbohydrateCount}
+                number={userMainDatas.keyData.carbohydrateCount}
                 unit={'g'}
                 type={'Glucides'}
               />
               &lt;CardInfo
                 icone={burger}
-                number={datas.data.keyData.lipidCount}
+                number={userMainDatas.keyData.lipidCount}
                 unit={'g'}
                 type={'Lipides'}
               />
@@ -113,13 +175,13 @@ export default Dashboard
 </div>
 
 <nav>
-    <h2><a href="index.html">SportSee</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LeftBtn">LeftBtn</a></li><li><a href="global.html#LeftNavBar">LeftNavBar</a></li><li><a href="global.html#TopNav">TopNav</a></li></ul>
+    <h2><a href="index.html">SportSee</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#BarGraph">BarGraph</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#getMainDatas">getMainDatas</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LeftBtn">LeftBtn</a></li><li><a href="global.html#LeftNavBar">LeftNavBar</a></li><li><a href="global.html#LineGraph">LineGraph</a></li><li><a href="global.html#SimpleRadialBarChart">SimpleRadialBarChart</a></li><li><a href="global.html#TopNav">TopNav</a></li><li><a href="global.html#UserSelect">UserSelect</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Feb 26 2022 22:46:06 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Mar 08 2022 22:07:57 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

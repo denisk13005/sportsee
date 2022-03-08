@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
+    <title>JSDoc: Source: dataStore/mainDataStore.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
+    <h1 class="page-title">Source: dataStore/mainDataStore.js</h1>
 
     
 
@@ -26,37 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import LeftBtn from './LeftBtn'
-import meditation from '../assets/meditation.svg'
-import nageur from '../assets/nageur.svg'
-import cycliste from '../assets/cycliste.svg'
-import haltere from '../assets/haltere.svg'
-import copyright from '../assets/copyright.svg'
-import '../styles/components/leftNavBar.scss'
+            <pre class="prettyprint source linenums"><code>import { fetchMainDatas } from '../fetchDatas'
 import PropTypes from 'prop-types'
 
 /**
  *
- * @returns {ReactElement}
+ * @param {number} userId
+ * @returns {Object} user main datas processing for display in the component
  */
-const LeftNavBar = () => {
-  return (
-    &lt;aside className="leftNavBar">
-      &lt;div className="leftBtnContainer">
-        &lt;LeftBtn icone={meditation} />
-        &lt;LeftBtn icone={nageur} />
-        &lt;LeftBtn icone={cycliste} />
-        &lt;LeftBtn icone={haltere} />
-      &lt;/div>
-      &lt;img className="copyright" src={copyright} alt="copyright" />
-    &lt;/aside>
-  )
+const getMainDatas = async (userId) => {
+  const datas = await fetchMainDatas(userId)
+
+  //fetch API
+  if (datas.data) {
+    const id = datas.data.id
+    const score = datas.data.score || datas.data.todayScore
+    const userInfos = datas.data.userInfos
+    const keyData = datas.data.keyData
+    return { id, score, userInfos, keyData }
+  }
+  //MOCK DATAS
+  else {
+    const id = datas[0].id
+    const score = datas[0].todayScore || datas[0].score
+    const userInfos = datas[0].userInfos
+    const keyData = datas[0].keyData
+    return { id, score, userInfos, keyData }
+  }
 }
-LeftBtn.propTypes = {
-  icone: PropTypes.string,
+getMainDatas.protoTypes = {
+  userId: PropTypes.number.isRequired,
 }
-export default LeftNavBar
+export default getMainDatas
 </code></pre>
         </article>
     </section>

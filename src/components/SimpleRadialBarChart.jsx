@@ -1,18 +1,20 @@
 import React from 'react'
 import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
+import PropTypes from 'prop-types'
 
+/**
+ *
+ * @param {Object} userMainDatas
+ * @returns {ReactComponentElement} radial bar chart of percentage of goal
+ */
 const SimpleRadialBarChart = ({ userMainDatas }) => {
   const data = [
     {
-      name: '25-29',
-      uv: 100,
-      pv: 4567,
+      score: 100,
       fill: 'white',
     },
     {
-      name: '25-29',
-      uv: userMainDatas.score * 100,
-      pv: 4567,
+      score: userMainDatas.score * 100,
       fill: 'red',
     },
   ]
@@ -29,16 +31,12 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
         endAngle={-360 + 200}
       >
         <circle cx="50%" cy="50%" fill="white" r="70"></circle>
-        <RadialBar
-          clockWise
-          cornerRadius={10}
-          fill="#FF0000"
-          isAnimationActive
-          dataKey="uv"
-        />
+        <RadialBar clockWise cornerRadius={10} fill="#FF0000" dataKey="score" />
       </RadialBarChart>
     </ResponsiveContainer>
   )
 }
-
+SimpleRadialBarChart.propTypes = {
+  userMainDatas: PropTypes.object.isRequired,
+}
 export default SimpleRadialBarChart

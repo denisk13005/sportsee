@@ -5,7 +5,10 @@ import john from '../assets/john.jpg'
 import '../styles/pages/userSelect.scss'
 import TopNav from '../components/TopNav'
 import LeftNavBar from '../components/LeftNavBar'
-
+/**
+ *
+ * @returns {ReactElement} login page
+ */
 const UserSelect = () => {
   return (
     <div className="userSelect">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
+    <title>JSDoc: Source: components/SimpleRadialBarChart.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
+    <h1 class="page-title">Source: components/SimpleRadialBarChart.jsx</h1>
 
     
 
@@ -27,36 +27,53 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import LeftBtn from './LeftBtn'
-import meditation from '../assets/meditation.svg'
-import nageur from '../assets/nageur.svg'
-import cycliste from '../assets/cycliste.svg'
-import haltere from '../assets/haltere.svg'
-import copyright from '../assets/copyright.svg'
-import '../styles/components/leftNavBar.scss'
+import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import PropTypes from 'prop-types'
 
 /**
  *
- * @returns {ReactElement}
+ * @param {Object} userMainDatas
+ * @returns {ReactComponentElement} radial bar chart of percentage of goal
  */
-const LeftNavBar = () => {
+const SimpleRadialBarChart = ({ userMainDatas }) => {
+  const data = [
+    {
+      score: 100,
+      fill: 'white',
+    },
+    {
+      score: userMainDatas.score * 100,
+      fill: 'red',
+    },
+  ]
+
   return (
-    &lt;aside className="leftNavBar">
-      &lt;div className="leftBtnContainer">
-        &lt;LeftBtn icone={meditation} />
-        &lt;LeftBtn icone={nageur} />
-        &lt;LeftBtn icone={cycliste} />
-        &lt;LeftBtn icone={haltere} />
-      &lt;/div>
-      &lt;img className="copyright" src={copyright} alt="copyright" />
-    &lt;/aside>
+    &lt;ResponsiveContainer width="100%" height="100%">
+      &lt;RadialBarChart
+        width={730}
+        height={250}
+        innerRadius="50%"
+        outerRadius="80%"
+        data={data}
+        startAngle={200}
+        endAngle={-360 + 200}
+      >
+        &lt;circle cx="50%" cy="50%" fill="white" r="70">&lt;/circle>
+        &lt;RadialBar
+          clockWise
+          cornerRadius={10}
+          fill="#FF0000"
+          isAnimationActive
+          dataKey="score"
+        />
+      &lt;/RadialBarChart>
+    &lt;/ResponsiveContainer>
   )
 }
-LeftBtn.propTypes = {
-  icone: PropTypes.string,
+SimpleRadialBarChart.propTypes = {
+  userMainDatas: PropTypes.object.isRequired,
 }
-export default LeftNavBar
+export default SimpleRadialBarChart
 </code></pre>
         </article>
     </section>

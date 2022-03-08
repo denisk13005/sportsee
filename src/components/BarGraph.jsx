@@ -9,10 +9,12 @@ import {
   Bar,
   CartesianGrid,
 } from 'recharts'
+import PropTypes from 'prop-types'
+
 /**
  *
- * @param {Object} activity
- * @returns
+ * @param {Object} activity user activity
+ * @returns {ReactComponentElement} Bar graph of user activity
  */
 const BarGraph = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
@@ -84,6 +86,9 @@ const BarGraph = ({ activity }) => {
       </ResponsiveContainer>
     </>
   )
+}
+BarGraph.propTypes = {
+  activity: PropTypes.object.isRequired,
 }
 
 export default BarGraph

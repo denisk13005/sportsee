@@ -8,7 +8,19 @@ import {
   Tooltip,
 } from 'recharts'
 import '../styles/components/lineGraph.scss'
+import PropTypes from 'prop-types'
+/**
+ *Line graph
+ * @param {Object} average user average sessions
+ * @returns {ReactComponentElement} line graph of user average sessions
+ */
 const LineGraph = ({ average }) => {
+  /**
+   * CustomTooltipAverage
+   * @param {boolean} active cursor in graph ?
+   * @param {object} payload contain of props
+   * @returns {HTMLElement} custom tooltip
+   */
   const CustomTooltipAverage = ({ active, payload }) => {
     if (active && payload[0].payload.day !== '') {
       return (
@@ -55,6 +67,9 @@ const LineGraph = ({ average }) => {
       </LineChart>
     </ResponsiveContainer>
   )
+}
+LineGraph.propTypes = {
+  average: PropTypes.object.isRequired,
 }
 
 export default LineGraph

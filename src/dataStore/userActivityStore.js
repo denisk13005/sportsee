@@ -1,4 +1,6 @@
 import { fetchUserActivity } from '../fetchDatas'
+import PropTypes from 'prop-types'
+
 /**
  * getUserActivity
  * @param {number} userId
@@ -25,5 +27,7 @@ const getUserActivity = async (userId) => {
     return datas[0].sessions
   }
 }
-
+getUserActivity.propTypes = {
+  userId: PropTypes.number.isRequired,
+}
 export default getUserActivity
