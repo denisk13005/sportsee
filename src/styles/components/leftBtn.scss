@@ -1,0 +1,15 @@
+.imgContainer {
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

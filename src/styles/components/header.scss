@@ -1,0 +1,26 @@
+.title {
+  margin-left: 107px;
+  margin-top: 68px;
+  .hello {
+    display: flex;
+    margin: 0;
+    font-size: 24px;
+    h1 {
+      margin: 0;
+      font-weight: 500;
+    }
+    .userName {
+      color: #e60000;
+      margin-left: 10px;
+    }
+  }
+  img {
+    width: 15px;
+    margin-left: 5px;
+  }
+  .congrats {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 77px;
+  }
+}
