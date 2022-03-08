@@ -12,6 +12,7 @@ import burger from '../assets/cheeseburger.svg'
 import { useParams } from 'react-router-dom'
 import getMainDatas from '../dataStore/mainDataStore'
 import getUserActivity from '../dataStore/userActivityStore'
+import getUserAverageSessions from '../dataStore/userAverageSessionsStore'
 import {
   fetchMainDatas,
   fetchUserActivity,
@@ -36,7 +37,7 @@ const Dashboard = () => {
 
   const [userMainDatas, setUserMainDatas] = useState()
   const [userActivity, setUserActivity] = useState()
-  // const [userAverageSessions, setUserAverageSessions] = useState()
+  const [userAverageSessions, setUserAverageSessions] = useState()
   // const [userPerformance, setUserPerformance] = useState()
 
   // DATAS PROCESSING
@@ -49,16 +50,11 @@ const Dashboard = () => {
     const datas = await getUserActivity(userId)
     setUserActivity(datas)
   }
-  // const loadUserAverageSessions = async () => {
-  //   const datas = await fetchUserAverageSessions(userId)
-  //   if (datas.data) {
-  //     const sessions = datas.data.sessions
-  //     setUserAverageSessions(sessions)
-  //   } else {
-  //     const sessions = datas[0].sessions
-  //     setUserAverageSessions(sessions)
-  //   }
-  // }
+  const loadUserAverageSessions = async () => {
+    const datas = await getUserAverageSessions(userId)
+    console.log(datas)
+    setUserAverageSessions(datas)
+  }
   // const loadUserPerformance = async () => {
   //   const datas = await fetchUserPerformance(userId)
   //   if (datas.data) {
@@ -76,13 +72,13 @@ const Dashboard = () => {
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()
-    // loadUserAverageSessions()
+    loadUserAverageSessions()
     // loadUserPerformance()
   }, [userId])
 
-  if (userMainDatas) {
-    console.log(userMainDatas)
-  }
+  // if (userMainDatas) {
+  //   console.log(userMainDatas)
+  // }
 
   return (
     <div>
@@ -97,7 +93,7 @@ const Dashboard = () => {
               <div className="dailyActivity">
                 {userActivity ? <BarGraph activity={userActivity} /> : null}
               </div>
-              {/* <div className="otherGraph">
+              <div className="otherGraph">
                 <div className="averageSessions">
                   <p className="pDescription">
                     Durée moyenne des <br />
@@ -107,11 +103,11 @@ const Dashboard = () => {
                     <LineGraph average={userAverageSessions} />
                   ) : null}
                 </div>
-                <div className="performances">
+                {/* <div className="performances">
                   {userPerformance ? (
                     <RadarGraph performances={userPerformance} />
                   ) : null}
-                </div>
+                </div> */}
                 <div className="score">
                   <p className="pScore">Score</p>
                   <div className="radarBarChart">
@@ -128,7 +124,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </section>
             <aside className="dailyIntake">
               <CardInfo
