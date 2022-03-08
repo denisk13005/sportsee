@@ -8,9 +8,12 @@ import {
   YAxis,
   Bar,
   CartesianGrid,
-  Rectangle,
 } from 'recharts'
-
+/**
+ *
+ * @param {Object} activity
+ * @returns
+ */
 const BarGraph = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {
