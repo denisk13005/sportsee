@@ -25,13 +25,6 @@ const BarGraph = ({ activity }) => {
     return null
   }
 
-  const formatDate = () => {
-    activity.forEach((date) => {
-      date.day = activity.indexOf(date) + 1
-    })
-  }
-  formatDate()
-
   return (
     <>
       <div className="description">
@@ -66,7 +59,7 @@ const BarGraph = ({ activity }) => {
             stroke="#74798c"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
             dataKey="day"
-            // padding={{ left: -50, right: -50 }}
+            // padding={{ left: -50 }}
           />
           <YAxis
             yAxisId="right"
