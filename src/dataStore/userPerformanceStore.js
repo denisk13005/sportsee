@@ -1,8 +1,11 @@
 import { fetchUserPerformance } from '../fetchDatas'
-
+/**
+ *
+ * @param {number} userId
+ * @returns {Object} user performances datas processing for display in the component
+ */
 const getUserPerformance = async (userId) => {
   const datas = await fetchUserPerformance(userId)
-  console.log(datas)
   const frenchTranslation = [
     'cardio',
     'Energie',
@@ -16,7 +19,6 @@ const getUserPerformance = async (userId) => {
     //api
     //data processing for display in the component
 
-    console.log(datas.data)
     for (let i = 0; i < frenchTranslation.length; i++) {
       datas.data.kind[i + 1] = frenchTranslation[i]
     }

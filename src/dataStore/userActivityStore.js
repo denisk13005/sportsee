@@ -2,7 +2,7 @@ import { fetchUserActivity } from '../fetchDatas'
 /**
  * getUserActivity
  * @param {number} userId
- * @returns {Object} datas processing for display in the component
+ * @returns {Object} user activity datas processing for display in the component
  */
 const getUserActivity = async (userId) => {
   const datas = await fetchUserActivity(userId)
