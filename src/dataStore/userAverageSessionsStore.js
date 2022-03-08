@@ -1,5 +1,9 @@
 import { fetchUserAverageSessions } from '../fetchDatas'
-
+/**
+ *
+ * @param {number} userId
+ * @returns {Object} user average sessions datas processing for display in the component
+ */
 const getUserAverageSessions = async (userId) => {
   const datas = await fetchUserAverageSessions(userId)
 

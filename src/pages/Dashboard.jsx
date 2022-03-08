@@ -13,13 +13,6 @@ import { useParams } from 'react-router-dom'
 import getMainDatas from '../dataStore/mainDataStore'
 import getUserActivity from '../dataStore/userActivityStore'
 import getUserAverageSessions from '../dataStore/userAverageSessionsStore'
-import {
-  fetchMainDatas,
-  fetchUserActivity,
-  fetchUserAverageSessions,
-  fetchUserPerformance,
-} from '../fetchDatas'
-
 import BarGraph from '../components/BarGraph'
 import LineGraph from '../components/LineGraph'
 import RadarGraph from '../components/RadarGraph'
@@ -27,13 +20,10 @@ import SimpleRadialBarChart from '../components/SimpleRadialBarChart'
 import getUserPerformance from '../dataStore/userPerformanceStore'
 
 /**
- *
- * @returns {ReactElements}
+ *Dashboard
+ * @returns {ReactElements} different components constituting the dashboard
  */
 const Dashboard = () => {
-  /**
-   * @param {object} datas users datas get from api
-   */
   let { userId } = useParams()
 
   const [userMainDatas, setUserMainDatas] = useState()
@@ -66,10 +56,6 @@ const Dashboard = () => {
     loadUserAverageSessions()
     loadUserPerformance()
   }, [userId])
-
-  // if (userMainDatas) {
-  //   console.log(userMainDatas)
-  // }
 
   return (
     <div>
