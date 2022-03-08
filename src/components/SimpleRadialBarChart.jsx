@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  ResponsiveContainer,
-  RadialBarChart,
-  RadialBar,
-  PolarAngleAxis,
-} from 'recharts'
+import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 
 const SimpleRadialBarChart = ({ userMainDatas }) => {
   const data = [
