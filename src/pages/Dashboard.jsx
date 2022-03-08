@@ -24,6 +24,7 @@ import BarGraph from '../components/BarGraph'
 import LineGraph from '../components/LineGraph'
 import RadarGraph from '../components/RadarGraph'
 import SimpleRadialBarChart from '../components/SimpleRadialBarChart'
+import getUserPerformance from '../dataStore/userPerformanceStore'
 
 /**
  *
@@ -38,7 +39,7 @@ const Dashboard = () => {
   const [userMainDatas, setUserMainDatas] = useState()
   const [userActivity, setUserActivity] = useState()
   const [userAverageSessions, setUserAverageSessions] = useState()
-  // const [userPerformance, setUserPerformance] = useState()
+  const [userPerformance, setUserPerformance] = useState()
 
   // DATAS PROCESSING
   const loadUserMainDatas = async () => {
@@ -52,28 +53,18 @@ const Dashboard = () => {
   }
   const loadUserAverageSessions = async () => {
     const datas = await getUserAverageSessions(userId)
-    console.log(datas)
     setUserAverageSessions(datas)
   }
-  // const loadUserPerformance = async () => {
-  //   const datas = await fetchUserPerformance(userId)
-  //   if (datas.data) {
-  //     const performances = datas.data.data
-  //     const kind = datas.data.kind
-  //     setUserPerformance({ performances, kind })
-  //   } else {
-  //     const performances = datas[0].data
-  //     const kind = datas[0].kind
-
-  //     setUserPerformance({ performances, kind })
-  //   }
-  // }
+  const loadUserPerformance = async () => {
+    const datas = await getUserPerformance(userId)
+    setUserPerformance(datas)
+  }
 
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()
     loadUserAverageSessions()
-    // loadUserPerformance()
+    loadUserPerformance()
   }, [userId])
 
   // if (userMainDatas) {
@@ -103,11 +94,11 @@ const Dashboard = () => {
                     <LineGraph average={userAverageSessions} />
                   ) : null}
                 </div>
-                {/* <div className="performances">
+                <div className="performances">
                   {userPerformance ? (
                     <RadarGraph performances={userPerformance} />
                   ) : null}
-                </div> */}
+                </div>
                 <div className="score">
                   <p className="pScore">Score</p>
                   <div className="radarBarChart">
