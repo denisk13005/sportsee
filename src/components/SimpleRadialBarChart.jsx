@@ -32,7 +32,6 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
         data={data}
         startAngle={200}
         endAngle={-360 + 200}
-        // margin={{ top: 10 }}
       >
         <circle cx="50%" cy="50%" fill="white" r="70"></circle>
         <RadialBar
