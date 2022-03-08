@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
+    <title>JSDoc: Source: dataStore/userActivityStore.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
+    <h1 class="page-title">Source: dataStore/userActivityStore.js</h1>
 
     
 
@@ -26,37 +26,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import LeftBtn from './LeftBtn'
-import meditation from '../assets/meditation.svg'
-import nageur from '../assets/nageur.svg'
-import cycliste from '../assets/cycliste.svg'
-import haltere from '../assets/haltere.svg'
-import copyright from '../assets/copyright.svg'
-import '../styles/components/leftNavBar.scss'
+            <pre class="prettyprint source linenums"><code>import { fetchUserActivity } from '../fetchDatas'
 import PropTypes from 'prop-types'
 
 /**
- *
- * @returns {ReactElement}
+ * getUserActivity
+ * @param {number} userId
+ * @returns {Object} user activity datas processing for display in the component
  */
-const LeftNavBar = () => {
-  return (
-    &lt;aside className="leftNavBar">
-      &lt;div className="leftBtnContainer">
-        &lt;LeftBtn icone={meditation} />
-        &lt;LeftBtn icone={nageur} />
-        &lt;LeftBtn icone={cycliste} />
-        &lt;LeftBtn icone={haltere} />
-      &lt;/div>
-      &lt;img className="copyright" src={copyright} alt="copyright" />
-    &lt;/aside>
-  )
+const getUserActivity = async (userId) => {
+  const datas = await fetchUserActivity(userId)
+
+  if (datas.data) {
+    //api
+    //data processing for display in the component
+
+    datas.data.sessions.forEach(
+      (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
+    )
+    return datas.data.sessions
+  } else {
+    //mock
+    //data processing for display in the component
+
+    datas[0].sessions.forEach(
+      (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
+    )
+    return datas[0].sessions
+  }
 }
-LeftBtn.propTypes = {
-  icone: PropTypes.string,
+getUserActivity.propTypes = {
+  userId: PropTypes.number.isRequired,
 }
-export default LeftNavBar
+export default getUserActivity
 </code></pre>
         </article>
     </section>

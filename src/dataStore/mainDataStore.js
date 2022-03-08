@@ -1,4 +1,6 @@
 import { fetchMainDatas } from '../fetchDatas'
+import PropTypes from 'prop-types'
+
 /**
  *
  * @param {number} userId
@@ -23,5 +25,8 @@ const getMainDatas = async (userId) => {
     const keyData = datas[0].keyData
     return { id, score, userInfos, keyData }
   }
+}
+getMainDatas.protoTypes = {
+  userId: PropTypes.number.isRequired,
 }
 export default getMainDatas

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
+    <title>JSDoc: Source: dataStore/userPerformanceStore.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
+    <h1 class="page-title">Source: dataStore/userPerformanceStore.js</h1>
 
     
 
@@ -26,37 +26,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import LeftBtn from './LeftBtn'
-import meditation from '../assets/meditation.svg'
-import nageur from '../assets/nageur.svg'
-import cycliste from '../assets/cycliste.svg'
-import haltere from '../assets/haltere.svg'
-import copyright from '../assets/copyright.svg'
-import '../styles/components/leftNavBar.scss'
+            <pre class="prettyprint source linenums"><code>import { fetchUserPerformance } from '../fetchDatas'
 import PropTypes from 'prop-types'
 
 /**
  *
- * @returns {ReactElement}
+ * @param {number} userId
+ * @returns {Object} user performances datas processing for display in the component
  */
-const LeftNavBar = () => {
-  return (
-    &lt;aside className="leftNavBar">
-      &lt;div className="leftBtnContainer">
-        &lt;LeftBtn icone={meditation} />
-        &lt;LeftBtn icone={nageur} />
-        &lt;LeftBtn icone={cycliste} />
-        &lt;LeftBtn icone={haltere} />
-      &lt;/div>
-      &lt;img className="copyright" src={copyright} alt="copyright" />
-    &lt;/aside>
-  )
+const getUserPerformance = async (userId) => {
+  const datas = await fetchUserPerformance(userId)
+  const frenchTranslation = [
+    'cardio',
+    'Energie',
+    'Endurance',
+    'Force',
+    'Vitesse',
+    'Intensité',
+  ]
+
+  if (datas.data) {
+    //api
+    //data processing for display in the component
+
+    for (let i = 0; i &lt; frenchTranslation.length; i++) {
+      datas.data.kind[i + 1] = frenchTranslation[i]
+    }
+    datas.data.data.forEach(
+      (el, index) => (el.kind = datas.data.kind[index + 1])
+    )
+    datas.data.data.reverse()
+    return datas.data.data
+  } else {
+    //mock
+    //data processing for display in the component
+
+    for (let i = 0; i &lt; frenchTranslation.length; i++) {
+      datas[0].kind[i + 1] = frenchTranslation[i]
+    }
+    datas[0].data.forEach((el, index) => (el.kind = datas[0].kind[index + 1]))
+    datas[0].data.reverse()
+    return datas[0].data
+  }
 }
-LeftBtn.propTypes = {
-  icone: PropTypes.string,
+getUserPerformance.propTypes = {
+  userId: PropTypes.number.isRequired,
 }
-export default LeftNavBar
+export default getUserPerformance
 </code></pre>
         </article>
     </section>

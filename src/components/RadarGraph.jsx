@@ -7,6 +7,7 @@ import {
   PolarGrid,
 } from 'recharts'
 import '../styles/components/radarGraph.scss'
+import PropTypes from 'prop-types'
 
 const RadarGraph = ({ performances }) => {
   return (
@@ -21,6 +22,9 @@ const RadarGraph = ({ performances }) => {
       </RadarChart>
     </ResponsiveContainer>
   )
+}
+RadarGraph.propTypes = {
+  performances: PropTypes.object.isRequired,
 }
 
 export default RadarGraph

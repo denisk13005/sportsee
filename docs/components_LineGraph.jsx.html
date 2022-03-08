@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/LeftNavBar.jsx</title>
+    <title>JSDoc: Source: components/LineGraph.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/LeftNavBar.jsx</h1>
+    <h1 class="page-title">Source: components/LineGraph.jsx</h1>
 
     
 
@@ -27,36 +27,80 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import LeftBtn from './LeftBtn'
-import meditation from '../assets/meditation.svg'
-import nageur from '../assets/nageur.svg'
-import cycliste from '../assets/cycliste.svg'
-import haltere from '../assets/haltere.svg'
-import copyright from '../assets/copyright.svg'
-import '../styles/components/leftNavBar.scss'
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from 'recharts'
+import '../styles/components/lineGraph.scss'
 import PropTypes from 'prop-types'
-
 /**
- *
- * @returns {ReactElement}
+ *Line graph
+ * @param {Object} average user average sessions
+ * @returns {ReactComponentElement} line graph of user average sessions
  */
-const LeftNavBar = () => {
+const LineGraph = ({ average }) => {
+  /**
+   * CustomTooltipAverage
+   * @param {boolean} active cursor in graph ?
+   * @param {object} payload contain of props
+   * @returns {HTMLElement} custom tooltip
+   */
+  const CustomTooltipAverage = ({ active, payload }) => {
+    if (active &amp;&amp; payload[0].payload.day !== '') {
+      return (
+        &lt;div className="customTooltipAverage">
+          &lt;p className="pCustomTooltipAverage">{`${payload[0].value}min`}&lt;/p>
+        &lt;/div>
+      )
+    }
+
+    return null
+  }
+
   return (
-    &lt;aside className="leftNavBar">
-      &lt;div className="leftBtnContainer">
-        &lt;LeftBtn icone={meditation} />
-        &lt;LeftBtn icone={nageur} />
-        &lt;LeftBtn icone={cycliste} />
-        &lt;LeftBtn icone={haltere} />
-      &lt;/div>
-      &lt;img className="copyright" src={copyright} alt="copyright" />
-    &lt;/aside>
+    &lt;ResponsiveContainer
+      className="lineGraphContainer"
+      height="68%"
+      width="100%"
+    >
+      &lt;LineChart
+        data={average}
+        margin={{ left: -80, right: -10 }}
+        className="lineChart"
+      >
+        &lt;Tooltip
+          content={&lt;CustomTooltipAverage />}
+          s
+          cursor={{ opacity: 0.4 }}
+        />
+        &lt;XAxis
+          dataKey="day"
+          stroke="transparant"
+          fontSize={12}
+          tick={{ fill: 'white', opacity: 0.6 }}
+          margin={{ right: -50 }}
+        />
+        &lt;YAxis domain={['dataMin-10', 'dataMax+5']} stroke="none" />
+        &lt;Line
+          type="natural"
+          dataKey="sessionLength"
+          stroke="white"
+          dot={false}
+          activeDot={{ r: 2, strokeWidth: 5, strokeOpacity: 0.4 }}
+        />
+      &lt;/LineChart>
+    &lt;/ResponsiveContainer>
   )
 }
-LeftBtn.propTypes = {
-  icone: PropTypes.string,
+LineGraph.propTypes = {
+  average: PropTypes.object.isRequired,
 }
-export default LeftNavBar
+
+export default LineGraph
 </code></pre>
         </article>
     </section>

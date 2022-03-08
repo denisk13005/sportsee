@@ -1,4 +1,6 @@
 import { fetchUserAverageSessions } from '../fetchDatas'
+import PropTypes from 'prop-types'
+
 /**
  *
  * @param {number} userId
@@ -31,6 +33,10 @@ const getUserAverageSessions = async (userId) => {
     datas[0].sessions.forEach((el, index) => (el.day = days[index]))
     return datas[0].sessions
   }
+}
+
+getUserAverageSessions.propTypes = {
+  userId: PropTypes.number.isRequired,
 }
 
 export default getUserAverageSessions
