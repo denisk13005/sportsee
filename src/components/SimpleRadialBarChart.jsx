@@ -38,7 +38,7 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
           clockWise
           cornerRadius={10}
           fill="#FF0000"
-          isAnimationActive={false}
+          isAnimationActive
           dataKey="uv"
         />
       </RadialBarChart>

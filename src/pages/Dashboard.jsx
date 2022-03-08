@@ -10,6 +10,7 @@ import chicken from '../assets/PouletBleu.svg'
 import apple from '../assets/pommeJaune.svg'
 import burger from '../assets/cheeseburger.svg'
 import { useParams } from 'react-router-dom'
+import getMainDatas from '../dataStore/mainDataStore'
 import {
   fetchMainDatas,
   fetchUserActivity,
@@ -33,70 +34,56 @@ const Dashboard = () => {
   let { userId } = useParams()
 
   const [userMainDatas, setUserMainDatas] = useState()
-  const [userActivity, setUserActivity] = useState()
-  const [userAverageSessions, setUserAverageSessions] = useState()
-  const [userPerformance, setUserPerformance] = useState()
+  // const [userActivity, setUserActivity] = useState()
+  // const [userAverageSessions, setUserAverageSessions] = useState()
+  // const [userPerformance, setUserPerformance] = useState()
 
   // DATAS PROCESSING
   const loadUserMainDatas = async () => {
-    const datas = await fetchMainDatas(userId)
-    //fetch API
-    if (datas.data) {
-      const id = datas.data.id
-      const score = datas.data.score
-      const userInfos = datas.data.userInfos
-      const keyData = datas.data.keyData
-      setUserMainDatas({ id, score, userInfos, keyData })
-    }
-    //MOCK DATAS
-    else {
-      const id = datas[0].id
-      const score = datas[0].todayScore || datas[0].score
-      const userInfos = datas[0].userInfos
-      const keyData = datas[0].keyData
-      setUserMainDatas({ id, score, keyData, userInfos })
-    }
+    const datas = await getMainDatas(userId)
+    console.log(datas)
+    setUserMainDatas(datas)
   }
 
-  const loadUserActivity = async () => {
-    const datas = await fetchUserActivity(userId)
-    if (datas.data) {
-      const sessions = datas.data.sessions
-      setUserActivity(sessions)
-    } else {
-      const sessions = datas[0].sessions
-      setUserActivity(sessions)
-    }
-  }
-  const loadUserAverageSessions = async () => {
-    const datas = await fetchUserAverageSessions(userId)
-    if (datas.data) {
-      const sessions = datas.data.sessions
-      setUserAverageSessions(sessions)
-    } else {
-      const sessions = datas[0].sessions
-      setUserAverageSessions(sessions)
-    }
-  }
-  const loadUserPerformance = async () => {
-    const datas = await fetchUserPerformance(userId)
-    if (datas.data) {
-      const performances = datas.data.data
-      const kind = datas.data.kind
-      setUserPerformance({ performances, kind })
-    } else {
-      const performances = datas[0].data
-      const kind = datas[0].kind
+  // const loadUserActivity = async () => {
+  //   const datas = await fetchUserActivity(userId)
+  //   if (datas.data) {
+  //     const sessions = datas.data.sessions
+  //     setUserActivity(sessions)
+  //   } else {
+  //     const sessions = datas[0].sessions
+  //     setUserActivity(sessions)
+  //   }
+  // }
+  // const loadUserAverageSessions = async () => {
+  //   const datas = await fetchUserAverageSessions(userId)
+  //   if (datas.data) {
+  //     const sessions = datas.data.sessions
+  //     setUserAverageSessions(sessions)
+  //   } else {
+  //     const sessions = datas[0].sessions
+  //     setUserAverageSessions(sessions)
+  //   }
+  // }
+  // const loadUserPerformance = async () => {
+  //   const datas = await fetchUserPerformance(userId)
+  //   if (datas.data) {
+  //     const performances = datas.data.data
+  //     const kind = datas.data.kind
+  //     setUserPerformance({ performances, kind })
+  //   } else {
+  //     const performances = datas[0].data
+  //     const kind = datas[0].kind
 
-      setUserPerformance({ performances, kind })
-    }
-  }
+  //     setUserPerformance({ performances, kind })
+  //   }
+  // }
 
   useEffect(() => {
     loadUserMainDatas()
-    loadUserActivity()
-    loadUserAverageSessions()
-    loadUserPerformance()
+    // loadUserActivity()
+    // loadUserAverageSessions()
+    // loadUserPerformance()
   }, [userId])
 
   if (userMainDatas) {
@@ -111,7 +98,7 @@ const Dashboard = () => {
         <div className="mainContent">
           <Header userName={userMainDatas.userInfos.firstName} />
 
-          <div className="graphsAndDailyContainer">
+          {/* <div className="graphsAndDailyContainer">
             <section className="graphsContainer">
               <div className="dailyActivity">
                 {userActivity ? <BarGraph activity={userActivity} /> : null}
@@ -175,7 +162,7 @@ const Dashboard = () => {
                 type={'Lipides'}
               />
             </aside>
-          </div>
+          </div> */}
         </div>
       ) : null}
     </div>
