@@ -20,6 +20,7 @@ import {
 import BarGraph from '../components/BarGraph'
 import LineGraph from '../components/LineGraph'
 import RadarGraph from '../components/RadarGraph'
+import SimpleRadialBarChart from '../components/SimpleRadialBarChart'
 
 /**
  *
@@ -98,8 +99,8 @@ const Dashboard = () => {
     loadUserPerformance()
   }, [userId])
 
-  if (userPerformance) {
-    console.log(userAverageSessions)
+  if (userMainDatas) {
+    console.log(userMainDatas)
   }
 
   return (
@@ -130,7 +131,22 @@ const Dashboard = () => {
                     <RadarGraph performances={userPerformance} />
                   ) : null}
                 </div>
-                <div className="score"></div>
+                <div className="score">
+                  <p>Score</p>
+                  <div className="radarBarChart">
+                    <SimpleRadialBarChart
+                      userMainDatas={userMainDatas}
+                      className="radar"
+                    />
+                    <div className="userObjectif">
+                      <p className="percent"> {userMainDatas.score * 100}%</p>
+                      <p>
+                        de votre <br />
+                        objectif
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
             <aside className="dailyIntake">
