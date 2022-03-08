@@ -1,14 +1,18 @@
 import React from 'react'
-import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
+import {
+  ResponsiveContainer,
+  RadialBarChart,
+  RadialBar,
+  PolarAngleAxis,
+} from 'recharts'
 
 const SimpleRadialBarChart = ({ userMainDatas }) => {
   const data = [
     {
-      name: '18-24',
+      name: '25-29',
       uv: 100,
-      pv: 2400,
-      fill: 'black',
-      // fillOpacity: 0.01,
+      pv: 4567,
+      fill: 'white',
     },
     {
       name: '25-29',
@@ -21,33 +25,23 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadialBarChart
-        // cx="47%"
-        // cy="32%"
         width={730}
         height={250}
-        innerRadius="55%"
+        innerRadius="50%"
         outerRadius="80%"
         data={data}
-        startAngle={0}
-        endAngle={360}
-        margin={{ top: 10 }}
+        startAngle={200}
+        endAngle={-360 + 200}
+        // margin={{ top: 10 }}
       >
+        <circle cx="50%" cy="50%" fill="white" r="70"></circle>
         <RadialBar
-          minAngle={15}
-          label={{ fill: '#666', position: 'insideStart' }}
-          background
-          clockWise={true}
+          clockWise
+          cornerRadius={10}
+          fill="#FF0000"
+          isAnimationActive={false}
           dataKey="uv"
         />
-        {/* <Legend
-          iconSize={10}
-          width={120}
-          height={140}
-          layout="vertical"
-          verticalAlign="middle"
-          align="right"
-        />
-        <Tooltip /> */}
       </RadialBarChart>
     </ResponsiveContainer>
   )

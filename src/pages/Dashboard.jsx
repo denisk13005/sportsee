@@ -132,7 +132,7 @@ const Dashboard = () => {
                   ) : null}
                 </div>
                 <div className="score">
-                  <p>Score</p>
+                  <p className="pScore">Score</p>
                   <div className="radarBarChart">
                     <SimpleRadialBarChart
                       userMainDatas={userMainDatas}
