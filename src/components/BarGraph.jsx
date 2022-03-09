@@ -64,7 +64,6 @@ const BarGraph = ({ activity }) => {
             stroke="#74798c"
             tick={{ stroke: '#74798c', fontWeight: 200 }}
             dataKey="day"
-            // padding={{ left: -50 }}
           />
           <YAxis
             yAxisId="right"
@@ -80,7 +79,6 @@ const BarGraph = ({ activity }) => {
             stroke="transparant"
             hide
             domain={['dataMin-150', 'dataMax']}
-            // tickCount={4}
           />
         </BarChart>
       </ResponsiveContainer>
