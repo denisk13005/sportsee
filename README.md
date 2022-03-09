@@ -3,6 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Clone the project, go to the project folder, install the dependencies by running the command
+
 ### `npm install`
 
 

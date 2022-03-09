@@ -88,7 +88,7 @@ const BarGraph = ({ activity }) => {
   )
 }
 BarGraph.propTypes = {
-  activity: PropTypes.object.isRequired,
+  activity: PropTypes.array.isRequired,
 }
 
 export default BarGraph
