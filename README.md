@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ## Project realized by Kirmann Denis
 
 [![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
 Sportsee is a tracking application, which will allow the user to see his daily performance in graph form
+=======
+# Getting Started 
+>>>>>>> 438bbc00b5f5029b798eab3fe68fe45106c5079a
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -10,6 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Clone the project, go to the project folder, install the dependencies by running the command
 
 ### `npm install`
+
 
 ## Available Scripts
 
