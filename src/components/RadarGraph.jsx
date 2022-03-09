@@ -5,15 +5,17 @@ import {
   ResponsiveContainer,
   PolarAngleAxis,
   PolarGrid,
+  PolarRadiusAxis,
 } from 'recharts'
 import '../styles/components/radarGraph.scss'
 import PropTypes from 'prop-types'
 
 const RadarGraph = ({ performances }) => {
   return (
-    <ResponsiveContainer width="100%">
-      <RadarChart data={performances} outerRadius="73%">
+    <ResponsiveContainer width="100%" height="100%">
+      <RadarChart data={performances} margin={{ left: 30 }}>
         <PolarGrid radialLines={false} fill="white" />
+
         <PolarAngleAxis
           dataKey="kind"
           tick={{ fill: 'white', fontSize: '12' }}
