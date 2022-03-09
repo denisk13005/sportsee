@@ -25,7 +25,7 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
         width={730}
         height={250}
         innerRadius="50%"
-        outerRadius="80%"
+        outerRadius="70%"
         data={data}
         startAngle={200}
         endAngle={-360 + 200}
