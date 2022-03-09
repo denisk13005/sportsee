@@ -5,7 +5,6 @@ import {
   ResponsiveContainer,
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
 } from 'recharts'
 import '../styles/components/radarGraph.scss'
 import PropTypes from 'prop-types'
