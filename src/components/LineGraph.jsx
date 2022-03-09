@@ -32,7 +32,21 @@ const LineGraph = ({ average }) => {
 
     return null
   }
+  let div = document.querySelector('.averageSessions')
 
+  const gradientBackground = (e) => {
+    if (e.isTooltipActive === true) {
+      let windowWidth = div.clientWidth
+      let mouseXpercentage = Math.round(
+        (e.activeCoordinate.x / windowWidth) * 100
+      )
+      div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,1.5) ${mouseXpercentage}%, rgba(175,0,0,1.5) 100%)`
+    }
+  }
+
+  const defaultBackground = (e) => {
+    div.style.background = 'red'
+  }
   return (
     <ResponsiveContainer
       className="lineGraphContainer"
@@ -43,6 +57,8 @@ const LineGraph = ({ average }) => {
         data={average}
         margin={{ left: -80, right: -10 }}
         className="lineChart"
+        onMouseMove={gradientBackground}
+        onMouseLeave={defaultBackground}
       >
         <Tooltip
           content={<CustomTooltipAverage />}
