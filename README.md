@@ -1,11 +1,14 @@
-# Getting Started 
+## Project realized by kirmann denis
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## To start
 
 Clone the project, go to the project folder, install the dependencies by running the command
 
 ### `npm install`
-
 
 ## Available Scripts
 
@@ -49,6 +52,8 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+To see Project Documentation to [Project documentation](https://denisk13005.github.io/sportsee/)
 
 ### Code Splitting
 
