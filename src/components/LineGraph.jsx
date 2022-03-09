@@ -69,7 +69,7 @@ const LineGraph = ({ average }) => {
   )
 }
 LineGraph.propTypes = {
-  average: PropTypes.object.isRequired,
+  average: PropTypes.array.isRequired,
 }
 
 export default LineGraph

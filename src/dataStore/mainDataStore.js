@@ -26,7 +26,7 @@ const getMainDatas = async (userId) => {
     return { id, score, userInfos, keyData }
   }
 }
-getMainDatas.protoTypes = {
+getMainDatas.propTypes = {
   userId: PropTypes.number.isRequired,
 }
 export default getMainDatas

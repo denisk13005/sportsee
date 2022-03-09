@@ -24,7 +24,7 @@ const RadarGraph = ({ performances }) => {
   )
 }
 RadarGraph.propTypes = {
-  performances: PropTypes.object.isRequired,
+  performances: PropTypes.array.isRequired,
 }
 
 export default RadarGraph
