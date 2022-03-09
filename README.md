@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+## Project realized by Kirmann Denis
+
+[![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
+Sportsee is a tracking application, which will allow the user to see his daily performance in graph form
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## To start
 
 Clone the project, go to the project folder, install the dependencies by running the command
 
@@ -48,6 +53,8 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+To see Project Documentation to [Project documentation](https://denisk13005.github.io/sportsee/)
 
 ### Code Splitting
 
