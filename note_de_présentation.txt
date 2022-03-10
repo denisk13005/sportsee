@@ -1,0 +1,18 @@
+note p12
+
+page de profil react
+
+présentation de rechart
+
+api(call async await , gestion des erreurs)
+
+jsdocs
+
+proptypes
+
+les cycles de vie des composants(hooks dans les composants fonctionnels)
+
+
+useEffect(() => { window.addEventListener('unhandledRejection', handler); return () => { window.removeEventListener('unhandledRejection', handler); } }, []
+
+le return va démonter le composant 
