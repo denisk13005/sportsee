@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Header.jsx</title>
+    <title>JSDoc: Source: components/RadarGraph.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Header.jsx</h1>
+    <h1 class="page-title">Source: components/RadarGraph.jsx</h1>
 
     
 
@@ -27,35 +27,45 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import '../styles/components/header.scss'
-import clap from '../assets/clap.png'
+import {
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+  PolarAngleAxis,
+  PolarGrid,
+} from 'recharts'
+import '../styles/components/radarGraph.scss'
 import PropTypes from 'prop-types'
 
 /**
- * Dashboard header to greet the user
- * @param {string} userName user name
- * @returns {ReactElement} hi user
+ *
+ * @param {performances} performances user performances
+ * @returns {ReactComponentElement}  radar graph of user performances
  */
-
-const Header = ({ userName }) => {
+const RadarGraph = ({ performances }) => {
   return (
-    &lt;div className="title">
-      &lt;div className="hello">
-        &lt;h1>Bonjour&lt;/h1>
-        &lt;h1 className="userName">{userName}&lt;/h1>
-      &lt;/div>
-      &lt;p className="congrats">
-        Félicitation ! Vous avez explosé vos objectifs hier
-        &lt;img src={clap} alt="clap" />
-      &lt;/p>
-    &lt;/div>
+    &lt;ResponsiveContainer width="100%" height="100%">
+      &lt;RadarChart data={performances}>
+        &lt;Radar dataKey="value" fill="red" opacity={0.8} />
+        &lt;PolarGrid
+          radialLines={false}
+          fill="white"
+          polarRadius={[5, 15, 35, 55, 75, 100]}
+        />
+
+        &lt;PolarAngleAxis
+          dataKey="kind"
+          tick={{ fill: 'white', fontSize: '12', dy: 3 }}
+        />
+      &lt;/RadarChart>
+    &lt;/ResponsiveContainer>
   )
 }
-Header.propTypes = {
-  userName: PropTypes.string,
+RadarGraph.propTypes = {
+  performances: PropTypes.array.isRequired,
 }
 
-export default Header
+export default RadarGraph
 </code></pre>
         </article>
     </section>

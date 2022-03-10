@@ -9,6 +9,11 @@ import {
 import '../styles/components/radarGraph.scss'
 import PropTypes from 'prop-types'
 
+/**
+ *
+ * @param {performances} performances user performances
+ * @returns {ReactComponentElement}  radar graph of user performances
+ */
 const RadarGraph = ({ performances }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
