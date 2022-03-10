@@ -12,12 +12,12 @@ import PropTypes from 'prop-types'
 const RadarGraph = ({ performances }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart data={performances} margin={{ right: '20' }}>
+      <RadarChart data={performances}>
         <Radar dataKey="value" fill="red" opacity={0.8} />
         <PolarGrid
           radialLines={false}
           fill="white"
-          polarRadius={[5, 15, 35, 55, 75, 95]}
+          polarRadius={[5, 15, 35, 55, 75, 100]}
         />
 
         <PolarAngleAxis

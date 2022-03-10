@@ -5,10 +5,9 @@
   flex-direction: column;
   .graphsAndDailyContainer {
     display: flex;
-    background-color: aquamarine;
     margin-left: 8.1%;
     .graphsContainer {
-      width: 63%;
+      width: 70%;
       height: 613px;
       .dailyActivity {
         width: 100%;
@@ -24,7 +23,7 @@
         justify-content: space-between;
         .averageSessions {
           background-color: #ff0000;
-          width: 258px;
+          width: 33%;
           height: 263px;
           border-radius: 5px;
           .pDescription {
@@ -37,12 +36,15 @@
         }
         .performances {
           background-color: rgb(46, 51, 51);
-          width: 258px;
+          width: 33%;
           height: 263px;
           border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .score {
-          width: 258px;
+          width: 33%;
           height: 263px;
           border-radius: 5px;
           background-color: #fbfbfb;
@@ -77,11 +79,14 @@
       }
     }
     .dailyIntake {
-      width: 4%;
+      width: 22%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin-left: 20px;
+      .cardInfoContainer {
+        width: 100%;
+      }
     }
   }
 }
