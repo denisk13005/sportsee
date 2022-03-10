@@ -91,7 +91,7 @@ export const fetchUserActivity = async (userId) => {
 /**
  *
  * @param {string} userId
- * @returns user average sessions
+ * @returns {Object} user average sessions
  */
 export const fetchUserAverageSessions = async (userId) => {
   try {
@@ -103,7 +103,11 @@ export const fetchUserAverageSessions = async (userId) => {
     console.log(err)
   }
 }
-
+/**
+ *
+ * @param {string} userId
+ * @returns {Object} user performance
+ */
 export const fetchUserPerformance = async (userId) => {
   try {
     const userPerformance = await fetch(`data/data.json`)
