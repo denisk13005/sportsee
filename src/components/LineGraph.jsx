@@ -11,7 +11,7 @@ import '../styles/components/lineGraph.scss'
 import PropTypes from 'prop-types'
 /**
  *Line graph
- * @param {Object} average user average sessions
+ * @param {object} average user average sessions
  * @returns {ReactComponentElement} line graph of user average sessions
  */
 const LineGraph = ({ average }) => {

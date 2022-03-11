@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 /**
  *
- * @param {Object} userMainDatas user main datas
+ * @param {object} userMainDatas user main datas
  * @returns {ReactComponentElement} radial bar chart of percentage of goal
  */
 const SimpleRadialBarChart = ({ userMainDatas }) => {

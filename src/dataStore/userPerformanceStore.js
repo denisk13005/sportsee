@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 /**
  *
  * @param {number} userId
- * @returns {Object} user performances datas processing for display in the component
+ * @returns {object} user performances datas processing for display in the component
  */
 const getUserPerformance = async (userId) => {
   const datas = await fetchUserPerformance(userId)
