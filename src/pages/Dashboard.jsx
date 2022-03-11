@@ -56,7 +56,6 @@ const Dashboard = () => {
     loadUserAverageSessions()
     loadUserPerformance()
   }, [userId])
-
   return (
     <div>
       <TopNav />
@@ -93,7 +92,10 @@ const Dashboard = () => {
                       className="radar"
                     />
                     <div className="userObjectif">
-                      <p className="percent"> {userMainDatas.score * 100}%</p>
+                      <p className="percent">
+                        {' '}
+                        {userMainDatas.scores[1].score}%
+                      </p>
                       <p>
                         de votre <br />
                         objectif
