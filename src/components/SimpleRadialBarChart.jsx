@@ -8,17 +8,6 @@ import PropTypes from 'prop-types'
  * @returns {ReactComponentElement} radial bar chart of percentage of goal
  */
 const SimpleRadialBarChart = ({ userMainDatas }) => {
-  const data = [
-    {
-      score: 100,
-      fill: 'white',
-    },
-    {
-      score: userMainDatas.score * 100,
-      fill: 'red',
-    },
-  ]
-
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadialBarChart
@@ -26,7 +15,7 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
         height={250}
         innerRadius="50%"
         outerRadius="70%"
-        data={data}
+        data={userMainDatas.scores}
         startAngle={200}
         endAngle={-360 + 200}
       >

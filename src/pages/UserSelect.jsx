@@ -29,7 +29,7 @@ const UserSelect = () => {
           <NavLink className="navlink" to="/18">
             <div className="userCard">
               <div className="imgContainer">
-                <img src={cecilia} alt="karl " />
+                <img src={cecilia} alt="cécilia " />
               </div>
               <p>Cecilia</p>
               <p>Ratorez</p>

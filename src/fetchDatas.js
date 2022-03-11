@@ -1,11 +1,9 @@
 // /////FETCH API
-
 // /**
-//  *
+//  *FETCH MAIN DATAS
 //  * @param {Number} userId id of user selected
 //  * @returns {Object} userMainDatas
 //  */
-
 // export const fetchMainDatas = async (userId) => {
 //   const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
 //     .then((res) => res.json())
@@ -13,7 +11,7 @@
 //   return userMainDatas
 // }
 // /**
-//  *
+//  *FETCH USER ACTIVITY
 //  * @param {number} userId is of user selected
 //  * @returns {Object} userActivity
 //  */
@@ -26,9 +24,8 @@
 
 //   return userActivity
 // }
-
 // /**
-//  *
+//  *FETCH USER AVERAGE SESSIONS
 //  * @param {number} userId id of user selected
 //  * @returns {Object} userAverageSession
 //  */
@@ -41,9 +38,8 @@
 
 //   return UserAverageSession
 // }
-
 // /**
-//  *
+//  *FETCH USER PERFORMANCE
 //  * @param {number} userId id of user selected
 //  * @returns {Object} userPerformance
 //  */
