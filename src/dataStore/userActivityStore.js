@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 /**
  * getUserActivity
  * @param {number} userId
- * @returns {Object} user activity datas processing for display in the component
+ * @returns {object} user activity datas processing for display in the component
  */
 const getUserActivity = async (userId) => {
   const datas = await fetchUserActivity(userId)

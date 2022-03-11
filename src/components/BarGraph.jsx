@@ -13,7 +13,7 @@ import PropTypes from 'prop-types'
 
 /**
  *
- * @param {Object} activity user activity
+ * @param {object} activity user activity
  * @returns {ReactComponentElement} Bar graph of user activity
  */
 const BarGraph = ({ activity }) => {
