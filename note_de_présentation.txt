@@ -8,7 +8,7 @@ api(call async await , gestion des erreurs)
 
 jsdocs
 
-proptypes
+module proptypes
 
 les cycles de vie des composants(hooks dans les composants fonctionnels)
 
