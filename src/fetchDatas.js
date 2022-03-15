@@ -16,13 +16,13 @@
 //  * @returns {object} userActivity
 //  */
 // export const fetchUserActivity = async (userId) => {
-//   const userActivity = await fetch(
-//     `http://localhost:5000/user/${userId}/activity`
-//   )
-//     .then((res) => res.json())
-//     .then((data) => data)
+// const userActivity = await fetch(
+//   `http://localhost:5000/user/${userId}/activity`
+// )
+//   .then((res) => res.json())
+//   .then((data) => data)
 
-//   return userActivity
+// return userActivity
 // }
 // /**
 //  *FETCH USER AVERAGE SESSIONS
@@ -61,6 +61,7 @@ let mock = false
  */
 export const fetchMainDatas = async (userId) => {
   if (mock) {
+    console.log('mock')
     try {
       const userMainDatas = await fetch(`data/data.json`)
         .then((res) => res.json())
@@ -72,10 +73,15 @@ export const fetchMainDatas = async (userId) => {
       return console.log(err)
     }
   } else {
-    const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
-      .then((res) => res.json())
-      .then((data) => data)
-    return userMainDatas.data
+    console.log('api')
+    try {
+      const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
+        .then((res) => res.json())
+        .then((data) => data)
+      return userMainDatas.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 /**
@@ -84,13 +90,29 @@ export const fetchMainDatas = async (userId) => {
  * @returns {object} user activity
  */
 export const fetchUserActivity = async (userId) => {
-  try {
-    const userActivity = await fetch(`data/data.json`)
-      .then((res) => res.json())
-      .then((data) => data.USER_ACTIVITY)
-    return userActivity.filter((el) => el.userId === parseInt(parseInt(userId)))
-  } catch (err) {
-    console.log(err)
+  if (mock) {
+    try {
+      const userActivity = await fetch(`data/data.json`)
+        .then((res) => res.json())
+        .then((data) => data.USER_ACTIVITY)
+      return userActivity.filter(
+        (el) => el.userId === parseInt(parseInt(userId))
+      )[0]
+    } catch (err) {
+      console.log(err)
+    }
+  } else {
+    try {
+      const userActivity = await fetch(
+        `http://localhost:5000/user/${userId}/activity`
+      )
+        .then((res) => res.json())
+        .then((data) => data)
+
+      return userActivity.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 /**
