@@ -30,13 +30,13 @@
 //  * @returns {object} userAverageSession
 //  */
 // export const fetchUserAverageSessions = async (userId) => {
-//   const UserAverageSession = await fetch(
-//     `http://localhost:5000/user/${userId}/average-sessions`
-//   )
-//     .then((res) => res.json())
-//     .then((data) => data)
+// const UserAverageSession = await fetch(
+//   `http://localhost:5000/user/${userId}/average-sessions`
+// )
+//   .then((res) => res.json())
+//   .then((data) => data)
 
-//   return UserAverageSession
+// return UserAverageSession
 // }
 // /**
 //  *FETCH USER PERFORMANCE
@@ -66,9 +66,7 @@ export const fetchMainDatas = async (userId) => {
       const userMainDatas = await fetch(`data/data.json`)
         .then((res) => res.json())
         .then((data) => data.USER_MAIN_DATA)
-      return userMainDatas.filter(
-        (el) => el.id === parseInt(parseInt(userId))
-      )[0]
+      return userMainDatas.filter((el) => el.id === parseInt(userId))[0]
     } catch (err) {
       return console.log(err)
     }
@@ -95,9 +93,7 @@ export const fetchUserActivity = async (userId) => {
       const userActivity = await fetch(`data/data.json`)
         .then((res) => res.json())
         .then((data) => data.USER_ACTIVITY)
-      return userActivity.filter(
-        (el) => el.userId === parseInt(parseInt(userId))
-      )[0]
+      return userActivity.filter((el) => el.userId === parseInt(userId))[0]
     } catch (err) {
       console.log(err)
     }
@@ -121,13 +117,29 @@ export const fetchUserActivity = async (userId) => {
  * @returns {object} user average sessions
  */
 export const fetchUserAverageSessions = async (userId) => {
-  try {
-    const userAverageSessions = await fetch(`data/data.json`)
-      .then((res) => res.json())
-      .then((data) => data.USER_AVERAGE_SESSIONS)
-    return userAverageSessions.filter((el) => el.userId === parseInt(userId))
-  } catch (err) {
-    console.log(err)
+  if (mock) {
+    try {
+      const userAverageSessions = await fetch(`data/data.json`)
+        .then((res) => res.json())
+        .then((data) => data.USER_AVERAGE_SESSIONS)
+      return userAverageSessions.filter(
+        (el) => el.userId === parseInt(userId)
+      )[0]
+    } catch (err) {
+      console.log(err)
+    }
+  } else {
+    try {
+      const UserAverageSession = await fetch(
+        `http://localhost:5000/user/${userId}/average-sessions`
+      )
+        .then((res) => res.json())
+        .then((data) => data)
+
+      return UserAverageSession.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 /**
