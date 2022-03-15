@@ -5,10 +5,10 @@
 //  * @returns {object} userMainDatas
 //  */
 // export const fetchMainDatas = async (userId) => {
-//   const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
-//     .then((res) => res.json())
-//     .then((data) => data)
-//   return userMainDatas
+// const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
+//   .then((res) => res.json())
+//   .then((data) => data)
+// return userMainDatas
 // }
 // /**
 //  *FETCH USER ACTIVITY
@@ -52,7 +52,7 @@
 
 //   return userPerformance
 // }
-
+let mock = false
 /////////////FETCH MOCK DATAS
 /**
  *
@@ -60,13 +60,22 @@
  * @returns {object} user  main datas
  */
 export const fetchMainDatas = async (userId) => {
-  try {
-    const userMainDatas = await fetch(`data/data.json`)
+  if (mock) {
+    try {
+      const userMainDatas = await fetch(`data/data.json`)
+        .then((res) => res.json())
+        .then((data) => data.USER_MAIN_DATA)
+      return userMainDatas.filter(
+        (el) => el.id === parseInt(parseInt(userId))
+      )[0]
+    } catch (err) {
+      return console.log(err)
+    }
+  } else {
+    const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
       .then((res) => res.json())
-      .then((data) => data.USER_MAIN_DATA)
-    return userMainDatas.filter((el) => el.id === parseInt(parseInt(userId)))
-  } catch (err) {
-    return console.log(err)
+      .then((data) => data)
+    return userMainDatas.data
   }
 }
 /**
