@@ -46,6 +46,7 @@ import LineGraph from '../components/LineGraph'
 import RadarGraph from '../components/RadarGraph'
 import SimpleRadialBarChart from '../components/SimpleRadialBarChart'
 import getUserPerformance from '../dataStore/userPerformanceStore'
+import ErrorPage from './ErrorPage'
 
 /**
  *Dashboard
@@ -86,82 +87,87 @@ const Dashboard = () => {
   }, [userId])
   return (
     &lt;div>
-      &lt;TopNav />
-      &lt;LeftNavBar />
       {userMainDatas ? (
-        &lt;div className="mainContent">
-          &lt;Header userName={userMainDatas.userInfos.firstName} />
+        &lt;>
+          &lt;TopNav />
+          &lt;LeftNavBar />
 
-          &lt;div className="graphsAndDailyContainer">
-            &lt;section className="graphsContainer">
-              &lt;div className="dailyActivity">
-                {userActivity ? &lt;BarGraph activity={userActivity} /> : null}
-              &lt;/div>
-              &lt;div className="otherGraph">
-                &lt;div className="averageSessions">
-                  &lt;p className="pDescription">
-                    Durée moyenne des &lt;br />
-                    sessions
-                  &lt;/p>
-                  {userAverageSessions ? (
-                    &lt;LineGraph average={userAverageSessions} />
-                  ) : null}
+          &lt;div className="mainContent">
+            &lt;Header userName={userMainDatas.userInfos.firstName} />
+
+            &lt;div className="graphsAndDailyContainer">
+              &lt;section className="graphsContainer">
+                &lt;div className="dailyActivity">
+                  {userActivity ? &lt;BarGraph activity={userActivity} /> : null}
                 &lt;/div>
-                &lt;div className="performances">
-                  {userPerformance ? (
-                    &lt;RadarGraph performances={userPerformance} />
-                  ) : null}
-                &lt;/div>
-                &lt;div className="score">
-                  &lt;p className="pScore">Score&lt;/p>
-                  &lt;div className="radarBarChart">
-                    &lt;SimpleRadialBarChart
-                      userMainDatas={userMainDatas}
-                      className="radar"
-                    />
-                    &lt;div className="userObjectif">
-                      &lt;p className="percent">
-                        {' '}
-                        {userMainDatas.scores[1].score}%
-                      &lt;/p>
-                      &lt;p>
-                        de votre &lt;br />
-                        objectif
-                      &lt;/p>
+                &lt;div className="otherGraph">
+                  &lt;div className="averageSessions">
+                    &lt;p className="pDescription">
+                      Durée moyenne des &lt;br />
+                      sessions
+                    &lt;/p>
+                    {userAverageSessions ? (
+                      &lt;LineGraph average={userAverageSessions} />
+                    ) : null}
+                  &lt;/div>
+                  &lt;div className="performances">
+                    {userPerformance ? (
+                      &lt;RadarGraph performances={userPerformance} />
+                    ) : null}
+                  &lt;/div>
+                  &lt;div className="score">
+                    &lt;p className="pScore">Score&lt;/p>
+                    &lt;div className="radarBarChart">
+                      &lt;SimpleRadialBarChart
+                        userMainDatas={userMainDatas}
+                        className="radar"
+                      />
+                      &lt;div className="userObjectif">
+                        &lt;p className="percent">
+                          {' '}
+                          {userMainDatas.scores[1].score}%
+                        &lt;/p>
+                        &lt;p>
+                          de votre &lt;br />
+                          objectif
+                        &lt;/p>
+                      &lt;/div>
                     &lt;/div>
                   &lt;/div>
                 &lt;/div>
-              &lt;/div>
-            &lt;/section>
-            &lt;aside className="dailyIntake">
-              &lt;CardInfo
-                icone={flammeRouge}
-                number={userMainDatas.keyData.calorieCount}
-                unit={'kCal'}
-                type={'Calories'}
-              />
-              &lt;CardInfo
-                icone={chicken}
-                number={userMainDatas.keyData.proteinCount}
-                unit={'g'}
-                type={'Protéines'}
-              />
-              &lt;CardInfo
-                icone={apple}
-                number={userMainDatas.keyData.carbohydrateCount}
-                unit={'g'}
-                type={'Glucides'}
-              />
-              &lt;CardInfo
-                icone={burger}
-                number={userMainDatas.keyData.lipidCount}
-                unit={'g'}
-                type={'Lipides'}
-              />
-            &lt;/aside>
+              &lt;/section>
+              &lt;aside className="dailyIntake">
+                &lt;CardInfo
+                  icone={flammeRouge}
+                  number={userMainDatas.keyData.calorieCount}
+                  unit={'kCal'}
+                  type={'Calories'}
+                />
+                &lt;CardInfo
+                  icone={chicken}
+                  number={userMainDatas.keyData.proteinCount}
+                  unit={'g'}
+                  type={'Protéines'}
+                />
+                &lt;CardInfo
+                  icone={apple}
+                  number={userMainDatas.keyData.carbohydrateCount}
+                  unit={'g'}
+                  type={'Glucides'}
+                />
+                &lt;CardInfo
+                  icone={burger}
+                  number={userMainDatas.keyData.lipidCount}
+                  unit={'g'}
+                  type={'Lipides'}
+                />
+              &lt;/aside>
+            &lt;/div>
           &lt;/div>
-        &lt;/div>
-      ) : null}
+        &lt;/>
+      ) : (
+        &lt;ErrorPage />
+      )}
     &lt;/div>
   )
 }
@@ -183,7 +189,7 @@ export default Dashboard
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Mar 11 2022 13:46:33 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Mar 15 2022 21:03:49 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

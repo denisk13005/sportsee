@@ -9,23 +9,22 @@ import PropTypes from 'prop-types'
 const getUserActivity = async (userId) => {
   const datas = await fetchUserActivity(userId)
 
-  if (datas.data) {
-    //api
-    //data processing for display in the component
+  //api
+  //data processing for display in the component
 
-    datas.data.sessions.forEach(
-      (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
-    )
-    return datas.data.sessions
-  } else {
-    //mock
-    //data processing for display in the component
+  datas.sessions.forEach(
+    (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
+  )
+  return datas.sessions
+  // } else {
+  //   //mock
+  //   //data processing for display in the component
 
-    datas[0].sessions.forEach(
-      (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
-    )
-    return datas[0].sessions
-  }
+  //   datas[0].sessions.forEach(
+  //     (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
+  //   )
+  //   return datas[0].sessions
+  // }
 }
 getUserActivity.propTypes = {
   userId: PropTypes.number.isRequired,
