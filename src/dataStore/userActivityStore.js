@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
  */
 const getUserActivity = async (userId) => {
   const datas = await fetchUserActivity(userId)
-  console.log(datas)
 
   //api
   //data processing for display in the component

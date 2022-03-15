@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
  */
 const getUserPerformance = async (userId) => {
   const datas = await fetchUserPerformance(userId)
+  console.log(datas)
   const frenchTranslation = [
     'cardio',
     'Energie',
@@ -17,29 +18,15 @@ const getUserPerformance = async (userId) => {
     'Intensité',
   ]
 
-  if (datas.data) {
-    //api
-    //data processing for display in the component
+  //api
+  //data processing for display in the component
 
-    for (let i = 0; i < frenchTranslation.length; i++) {
-      datas.data.kind[i + 1] = frenchTranslation[i]
-    }
-    datas.data.data.forEach(
-      (el, index) => (el.kind = datas.data.kind[index + 1])
-    )
-    datas.data.data.reverse()
-    return datas.data.data
-  } else {
-    //mock
-    //data processing for display in the component
-
-    for (let i = 0; i < frenchTranslation.length; i++) {
-      datas[0].kind[i + 1] = frenchTranslation[i]
-    }
-    datas[0].data.forEach((el, index) => (el.kind = datas[0].kind[index + 1]))
-    datas[0].data.reverse()
-    return datas[0].data
+  for (let i = 0; i < frenchTranslation.length; i++) {
+    datas.kind[i + 1] = frenchTranslation[i]
   }
+  datas.data.forEach((el, index) => (el.kind = datas.kind[index + 1]))
+  datas.data.reverse()
+  return datas.data
 }
 getUserPerformance.propTypes = {
   userId: PropTypes.number.isRequired,

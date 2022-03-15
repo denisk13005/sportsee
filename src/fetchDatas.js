@@ -1,61 +1,7 @@
-// /////FETCH API
-// /**
-//  *FETCH MAIN DATAS
-//  * @param {Number} userId id of user selected
-//  * @returns {object} userMainDatas
-//  */
-// export const fetchMainDatas = async (userId) => {
-// const userMainDatas = await fetch(`http://localhost:5000/user/${userId}`)
-//   .then((res) => res.json())
-//   .then((data) => data)
-// return userMainDatas
-// }
-// /**
-//  *FETCH USER ACTIVITY
-//  * @param {number} userId is of user selected
-//  * @returns {object} userActivity
-//  */
-// export const fetchUserActivity = async (userId) => {
-// const userActivity = await fetch(
-//   `http://localhost:5000/user/${userId}/activity`
-// )
-//   .then((res) => res.json())
-//   .then((data) => data)
-
-// return userActivity
-// }
-// /**
-//  *FETCH USER AVERAGE SESSIONS
-//  * @param {number} userId id of user selected
-//  * @returns {object} userAverageSession
-//  */
-// export const fetchUserAverageSessions = async (userId) => {
-// const UserAverageSession = await fetch(
-//   `http://localhost:5000/user/${userId}/average-sessions`
-// )
-//   .then((res) => res.json())
-//   .then((data) => data)
-
-// return UserAverageSession
-// }
-// /**
-//  *FETCH USER PERFORMANCE
-//  * @param {number} userId id of user selected
-//  * @returns {object} userPerformance
-//  */
-// export const fetchUserPerformance = async (userId) => {
-//   const userPerformance = await fetch(
-//     `http://localhost:5000/user/${userId}/performance`
-//   )
-//     .then((res) => res.json())
-//     .then((data) => data)
-
-//   return userPerformance
-// }
 let mock = false
-/////////////FETCH MOCK DATAS
+
 /**
- *
+ *Fetch user main datas
  * @param {string} userId
  * @returns {object} user  main datas
  */
@@ -83,7 +29,7 @@ export const fetchMainDatas = async (userId) => {
   }
 }
 /**
- *
+ *fetch user activity
  * @param {string} userId
  * @returns {object} user activity
  */
@@ -112,7 +58,7 @@ export const fetchUserActivity = async (userId) => {
   }
 }
 /**
- *
+ *fetch user average sessions
  * @param {string} userId
  * @returns {object} user average sessions
  */
@@ -143,17 +89,31 @@ export const fetchUserAverageSessions = async (userId) => {
   }
 }
 /**
- *
+ *fetch user performance
  * @param {string} userId
  * @returns {object} user performance
  */
 export const fetchUserPerformance = async (userId) => {
-  try {
-    const userPerformance = await fetch(`data/data.json`)
-      .then((res) => res.json())
-      .then((data) => data.USER_PERFORMANCE)
-    return userPerformance.filter((el) => el.userId === parseInt(userId))
-  } catch (err) {
-    return console.log(err)
+  if (mock) {
+    try {
+      const userPerformance = await fetch(`data/data.json`)
+        .then((res) => res.json())
+        .then((data) => data.USER_PERFORMANCE)
+      return userPerformance.filter((el) => el.userId === parseInt(userId))[0]
+    } catch (err) {
+      return console.log(err)
+    }
+  } else {
+    try {
+      const userPerformance = await fetch(
+        `http://localhost:5000/user/${userId}/performance`
+      )
+        .then((res) => res.json())
+        .then((data) => data)
+
+      return userPerformance.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 }

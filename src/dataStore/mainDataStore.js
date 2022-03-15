@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
  */
 const getMainDatas = async (userId) => {
   const datas = await fetchMainDatas(userId)
-  console.log(datas)
 
   const id = datas.id
   const scores = [

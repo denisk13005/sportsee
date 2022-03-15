@@ -46,16 +46,16 @@ const Dashboard = () => {
     const datas = await getUserAverageSessions(userId)
     setUserAverageSessions(datas)
   }
-  // const loadUserPerformance = async () => {
-  //   const datas = await getUserPerformance(userId)
-  //   setUserPerformance(datas)
-  // }
+  const loadUserPerformance = async () => {
+    const datas = await getUserPerformance(userId)
+    setUserPerformance(datas)
+  }
 
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()
     loadUserAverageSessions()
-    // loadUserPerformance()
+    loadUserPerformance()
   }, [userId])
   return (
     <div>
