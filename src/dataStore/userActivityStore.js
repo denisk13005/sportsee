@@ -11,20 +11,10 @@ const getUserActivity = async (userId) => {
 
   //api
   //data processing for display in the component
-
   datas.sessions.forEach(
-    (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
+    (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1))) // day of the month
   )
   return datas.sessions
-  // } else {
-  //   //mock
-  //   //data processing for display in the component
-
-  //   datas[0].sessions.forEach(
-  //     (el) => (el.day = parseInt(el.day.split('-').reverse().slice(0, 1)))
-  //   )
-  //   return datas[0].sessions
-  // }
 }
 getUserActivity.propTypes = {
   userId: PropTypes.number.isRequired,
