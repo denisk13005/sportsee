@@ -13,7 +13,7 @@ const getMainDatas = async (userId) => {
   const scores = [
     {
       score: 100,
-      fill: 'white',
+      fill: 'transparent',
     },
     {
       score: (datas.todayScore || datas.score) * 100,
