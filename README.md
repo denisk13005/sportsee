@@ -2,7 +2,7 @@
 
 ## Made With
 
-![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black)
+![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Rechart](https://img.shields.io/badge/Library-Rechart-success)
 
 ## Getting Started
 
