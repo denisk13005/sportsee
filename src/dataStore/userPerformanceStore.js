@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
  */
 const getUserPerformance = async (userId) => {
   const datas = await fetchUserPerformance(userId)
-  console.log(datas)
   const frenchTranslation = [
     'cardio',
     'Energie',
