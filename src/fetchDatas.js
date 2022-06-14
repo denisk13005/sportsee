@@ -6,13 +6,14 @@ let mock = true
  * @returns {object} user  main datas
  */
 export const fetchMainDatas = async (userId) => {
+  console.log('userIdine fetchMainDatas', userId, typeof userId)
   if (mock) {
     console.log('mock')
     try {
       const userMainDatas = await fetch(`data/data.json`)
         .then((res) => res.json())
         .then((data) => data.USER_MAIN_DATA)
-      return userMainDatas.filter((el) => el.id === parseInt(userId))[0]
+      return userMainDatas.filter((el) => el.id + '' === userId)[0]
     } catch (err) {
       return console.log(err)
     }

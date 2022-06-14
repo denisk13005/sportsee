@@ -7,20 +7,24 @@ import PropTypes from 'prop-types'
  * @returns {object} user average sessions datas processing for display in the component
  */
 const getUserAverageSessions = async (userId) => {
-  const datas = await fetchUserAverageSessions(userId)
+  try {
+    const datas = await fetchUserAverageSessions(userId)
 
-  const days = ['', 'L', 'M', 'M', 'J', 'V', 'S', 'D', '']
+    const days = ['', 'L', 'M', 'M', 'J', 'V', 'S', 'D', '']
 
-  //api
-  //data processing for display in the component
-  datas.sessions = [
-    { day: '', sessionLength: 30 },
-    ...datas.sessions,
-    { day: '', sessionLength: 30 },
-  ]
-  datas.sessions.forEach((el, index) => (el.day = days[index]))
+    //api
+    //data processing for display in the component
+    datas.sessions = [
+      { day: '', sessionLength: 30 },
+      ...datas.sessions,
+      { day: '', sessionLength: 30 },
+    ]
+    datas.sessions.forEach((el, index) => (el.day = days[index]))
 
-  return datas.sessions
+    return datas.sessions
+  } catch {
+    return { sessions: [] }
+  }
 }
 
 getUserAverageSessions.propTypes = {
