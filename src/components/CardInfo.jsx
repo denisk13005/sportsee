@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
  */
 const CardInfo = ({ icone, number, unit, type }) => {
   return (
-    <div className="cardInfoContainer" style={{ backgroundColor: 'lightBlue' }}>
+    <div className="cardInfoContainer">
       <div className="imgContainer" id={type}>
         <img src={icone} alt="icone" />
       </div>
