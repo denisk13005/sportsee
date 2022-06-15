@@ -1,14 +1,20 @@
+.userSelect {
+  width: 100vw;
+  height: 95vh;
+}
 .userContainer {
-  width: 650px;
-  height: max-content;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-40%, -50%);
+  height: 95vh;
+
   ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     padding: 0;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
     .navlink {
       text-decoration: none;
       color: white;
@@ -24,6 +30,10 @@
       align-items: center;
       padding: 15px;
       border-radius: 10px;
+      margin: 0 10px;
+      @media screen and (max-width: 900px) {
+        margin: 10px 0;
+      }
       p {
         margin: 0;
       }

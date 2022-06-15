@@ -3,12 +3,24 @@
   margin-left: 8.1%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 900px) {
+    margin: 0;
+    width: 100%;
+  }
   .graphsAndDailyContainer {
     display: flex;
     margin-left: 8.1%;
+    @media screen and (max-width: 900px) {
+      width: 100%;
+      flex-direction: column-reverse;
+      margin-left: 0;
+      align-items: center;
+    }
     .graphsContainer {
       width: 70%;
-      height: 613px;
+      @media screen and (max-width: 900px) {
+        width: 100%;
+      }
       .dailyActivity {
         width: 100%;
         height: 320px;
@@ -17,15 +29,23 @@
       }
       .otherGraph {
         width: 100%;
-        height: 263px;
         margin-top: 30px;
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: 900px) {
+          flex-direction: column;
+          width: 97%;
+          margin: 30px auto;
+        }
         .averageSessions {
           background-color: #ff0000;
           width: 32%;
           height: 263px;
           border-radius: 5px;
+          @media screen and (max-width: 900px) {
+            width: 100%;
+            margin-bottom: 10px;
+          }
           .pDescription {
             font-size: 15px;
             color: aliceblue;
@@ -42,13 +62,20 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-bottom: 10px;
+          @media screen and (max-width: 900px) {
+            width: 100%;
+          }
         }
         .score {
           width: 32%;
           height: 263px;
           border-radius: 5px;
-          background-color: #fbfbfb;
+          background-color: #e9e9e9;
           position: relative;
+          @media screen and (max-width: 900px) {
+            width: 100%;
+          }
           .pScore {
             margin-left: 30px;
             margin-top: 24px;
@@ -84,8 +111,12 @@
       flex-direction: column;
       justify-content: space-between;
       margin-left: 20px;
-      .cardInfoContainer {
+      @media screen and (max-width: 900px) {
         width: 100%;
+        height: 15vh;
+        margin-left: 0;
+        justify-content: space-evenly;
+        flex-direction: row;
       }
     }
   }

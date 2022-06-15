@@ -35,8 +35,10 @@ const BarGraph = ({ activity }) => {
       <div className="description">
         <p>Activité quotidienne</p>
         <ul>
-          <li id="weight">Poids (kg)</li>
-          <li className="cal">Calories brûlées (kCal)</li>
+          <li id="weight">Poids</li>
+          <span className="kg">(kg)</span>
+          <li className="cal">Calories brûlées</li>
+          <span className="kcal">(kCal)</span>
         </ul>
       </div>
       <ResponsiveContainer height={270} width="100%">
