@@ -7,6 +7,9 @@
   align-items: center;
   padding-top: 256px;
   position: absolute;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 
   .copyright {
     margin-top: 150px;
