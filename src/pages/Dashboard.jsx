@@ -57,15 +57,6 @@ const Dashboard = () => {
     setLoading(false)
   }
 
-  // const checkUrl = () => {
-  //   // console.log(userMainDatas)
-  //   if (userMainDatas.id === '') {
-  //     console.log('url error')
-  //   }
-  //   // setGoodUrl(true)
-  //   console.log('ok')
-  // }
-
   useEffect(() => {
     loadUserMainDatas()
     loadUserActivity()

@@ -1,18 +1,30 @@
 .topNav {
-  width: 100%;
+  width: 100vw;
   height: 91px;
   background-color: black;
   z-index: 3;
   display: flex;
+  @media screen and (max-width: 900px) {
+    height: 60px;
+  }
+
   img {
     width: 178px;
     height: 61px;
     margin-left: 28px;
     margin-top: 18px;
+    @media screen and (max-width: 900px) {
+      width: 100px;
+      margin: 0;
+      margin-left: 5px;
+    }
   }
   .navigation {
     width: 100%;
     font-size: 24px;
+    @media screen and (max-width: 900px) {
+      font-size: 12px;
+    }
 
     ul {
       display: flex;
@@ -20,6 +32,10 @@
       height: 100%;
       align-items: center;
       margin-top: 0;
+      @media screen and (max-width: 900px) {
+        padding: 0;
+      }
+
       li {
         color: white;
         list-style-type: none;
